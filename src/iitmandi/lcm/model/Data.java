@@ -10,7 +10,7 @@ public class Data {
     public Map<Integer, Attribute> attributeMap;
 
     public Data() {
-        objectMap = new HashMap<>();
+        objectMap = new HashMap< >();
         attributeMap = new HashMap<>();
     }
 }

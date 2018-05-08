@@ -9,7 +9,7 @@ public class Test {
         Data data = new Data();
         Reader.readFile("/home/shravan/IdeaProjects/LCM/src/iitmandi/lcm/SmallMushroom.txt", data);
 //        Printer.printData(data);
-        LCM lcm = new LCM();
+        LCM0 lcm = new LCM0();
         long startTime = System.nanoTime();
         lcm.findClosedConcepts(data, new RoaringBitmap(), 1);
         double endTime = System.nanoTime();
