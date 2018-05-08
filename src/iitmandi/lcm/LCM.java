@@ -1,8 +1,9 @@
 package iitmandi.lcm;
 
 import iitmandi.lcm.model.*;
-import iitmandi.lcm.model.Object;
 import org.roaringbitmap.RoaringBitmap;
+
+import java.util.ArrayList;
 
 public class LCM {
 
@@ -10,45 +11,14 @@ public class LCM {
     private Data originalData;
     private RoaringBitmap usefulObjectList;
 
-    private void makeCopy(Data data) {
-        originalData = new Data();
-        originalData.totalObjects = data.totalObjects;
-        originalData.totalAttributes = data.totalAttributes;
-        for(Integer x: data.objectMap.keySet()) {
-            Object object = new Object(x);
-            object.attributeList = data.objectMap.get(x).attributeList.clone();
-            originalData.objectMap.put(x, object);
-        }
-        for(Integer x: data.attributeMap.keySet()) {
-            Attribute attribute = new Attribute(x);
-            attribute.objectList = data.attributeMap.get(x).objectList.clone();
-            originalData.attributeMap.put(x, attribute);
-        }
-    }
-
-    private RoaringBitmap removeObjects(Data data, Integer attributeID) {
-
-        RoaringBitmap notRequiredObjectList = new RoaringBitmap();
-
-//        for(Integer x: data.objectMap.keySet()) {
-//            notRequiredObjectList.add(x);
-//        }
+    private ArrayList<Integer> removeObjects(Data data, Integer attributeID) {
+        ArrayList<Integer> notRequiredObjectList = new ArrayList<>();
         for(Integer x: usefulObjectList) {
-            notRequiredObjectList.add(x);
+            if(!data.attributeMap.get(attributeID).objectList.contains(x)) {
+                notRequiredObjectList.add(x);
+            }
         }
-        for(Integer x: data.attributeMap.get(attributeID).objectList) {
-            notRequiredObjectList.remove(x);
-        }
-
         //Removing objects that do not contain attribute attributeID
-//        for(Integer x: notRequiredObjectList) {
-//            for(Integer y: data.objectMap.get(x).attributeList) {
-//                data.attributeMap.get(y).objectList.remove(x);
-//            }
-//        }
-//        for(Integer x: notRequiredObjectList) {
-//            data.objectMap.remove(x);
-//        }
         for(Integer x: notRequiredObjectList) {
             usefulObjectList.remove(x);
         }
@@ -58,9 +28,6 @@ public class LCM {
     private RoaringBitmap findCommonAttributes(Data data){
         RoaringBitmap result = new RoaringBitmap();
         result.add(1, data.totalAttributes + 1);
-//        for (Integer objectID : data.objectMap.keySet()) {
-//            result.and(data.objectMap.get(objectID).attributeList);
-//        }
         for(Integer x: usefulObjectList) {
             result.and(data.objectMap.get(x).attributeList);
         }
@@ -70,7 +37,6 @@ public class LCM {
     public void findClosedConcepts(Data data, RoaringBitmap seedConcept, int marker) {
         if(seedConcept.getCardinality() == 0) {
             totalConcepts = 0;
-//            makeCopy(data);
             usefulObjectList = new RoaringBitmap();
             usefulObjectList.add(1,data.totalObjects + 1);
             seedConcept = findCommonAttributes(data);
@@ -85,7 +51,7 @@ public class LCM {
             if(!seedConcept.contains(i)) {
 
                 //Removing all objects that do not contain attribute i
-                RoaringBitmap removedObjectList = removeObjects(data, i);
+                ArrayList<Integer> removedObjectList = removeObjects(data, i);
                 RoaringBitmap childConcept = findCommonAttributes(data);
 
                 boolean isDuplicate = false;
@@ -105,14 +71,6 @@ public class LCM {
                 for(Integer x: removedObjectList) {
                     usefulObjectList.add(x);
                 }
-//                for(Integer x: removedObjectList) {
-//                    data.objectMap.put(x, originalData.objectMap.get(x));
-//                }
-//                for(Integer x: removedObjectList) {
-//                    for(Integer y: data.objectMap.get(x).attributeList) {
-//                        data.attributeMap.get(y).objectList.add(x);
-//                    }
-//                }
             }
         }
     }

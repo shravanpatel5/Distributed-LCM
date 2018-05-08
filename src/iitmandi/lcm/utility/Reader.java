@@ -16,11 +16,11 @@ public class Reader {
             String line;
             int totalAttributes = 0;
             int objectCounter = 0;
-
+            data.objectMap.add(new Object(objectCounter));
             while ((line = bufferedReader.readLine()) != null) {
                 objectCounter++;
                 String[] stringArray = line.split(" ");
-                data.objectMap.put(objectCounter, new Object(objectCounter));
+                data.objectMap.add(new Object(objectCounter));
                 for (int i = 0; i < stringArray.length; i++) {
                     int attributeID = Integer.parseInt(stringArray[i]);
                     data.objectMap.get(objectCounter).attributeList.add(attributeID);
@@ -30,8 +30,8 @@ public class Reader {
             data.totalAttributes = totalAttributes;
             data.totalObjects = objectCounter;
 
-            for(int i=1; i <= totalAttributes; i++){
-                data.attributeMap.put(i, new Attribute(i));
+            for(int i=0; i <= totalAttributes; i++){
+                data.attributeMap.add(new Attribute(i));
             }
             for(int i=1; i <= objectCounter; i++){
                 for(Integer x: data.objectMap.get(i).attributeList){

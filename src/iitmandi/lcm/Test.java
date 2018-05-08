@@ -7,9 +7,9 @@ import org.roaringbitmap.RoaringBitmap;
 public class Test {
     public static void main(String[] args){
         Data data = new Data();
-        Reader.readFile("/home/shravan/IdeaProjects/LCM/src/iitmandi/lcm/SmallMushroom.txt", data);
+        Reader.readFile("/home/shravan/IdeaProjects/LCM/src/iitmandi/lcm/Mushroom.txt", data);
 //        Printer.printData(data);
-        LCM0 lcm = new LCM0();
+        LCM lcm = new LCM();
         long startTime = System.nanoTime();
         lcm.findClosedConcepts(data, new RoaringBitmap(), 1);
         double endTime = System.nanoTime();
