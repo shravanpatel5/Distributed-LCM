@@ -9,11 +9,11 @@ public class Main {
         String arguments[] = MPI.Init(args);
         String fileName;
         if(arguments.length == 0) {
-//            fileName = "/home/shravan/Desktop/SmallMushroom.txt";
-            System.out.println("Please enter filename");
-            return;
+            fileName = "/home/shravan/Desktop/SmallMushroom.txt";
+//            System.out.println("Please enter filename");
+//            return;
         }
-//        else
+        else
         fileName = arguments[0];
         int rank = MPI.COMM_WORLD.Rank();
         Data data = new Data();

@@ -10,39 +10,47 @@ import java.util.Queue;
 
 public class LCM {
 
-    public static double startTime;
+
     public int totalConcepts;
+    public static double startTime;
     private Data data;
-    private RoaringBitmap usefulObjectList;
     private Queue<Node> queue;
+    private ArrayList<ArrayList<Integer>> T;
 
     public LCM(Data data) {
         this.data = data;
         queue = new LinkedList<>();
+        T = new ArrayList<>();
+        for(Integer i = 0; i <= data.totalAttributes; i++) {
+            T.add(new ArrayList<>());
+        }
+        for(Integer i = 1; i <= data.totalObjects; i++) {
+            T.get(0).add(i);
+        }
     }
 
-    private ArrayList<Integer> removeObjects(Integer attributeID) {
-        ArrayList<Integer> notRequiredObjectList = new ArrayList<>();
-        for(Integer x: usefulObjectList) {
-            if(!data.attributeMap.get(attributeID).objectList.contains(x)) {
-                notRequiredObjectList.add(x);
-            }
-        }
-        //Removing objects that do not contain attribute attributeID
-        for(Integer x: notRequiredObjectList) {
-            usefulObjectList.remove(x);
-        }
-        return notRequiredObjectList;
-    }
+//    private ArrayList<Integer> removeObjects(Integer attributeID) {
+//        ArrayList<Integer> notRequiredObjectList = new ArrayList<>();
+//        for(Integer x: usefulObjectList) {
+//            if(!data.attributeMap.get(attributeID).objectList.contains(x)) {
+//                notRequiredObjectList.add(x);
+//            }
+//        }
+//        //Removing objects that do not contain attribute attributeID
+//        for(Integer x: notRequiredObjectList) {
+//            usefulObjectList.remove(x);
+//        }
+//        return notRequiredObjectList;
+//    }
 
-    private RoaringBitmap findCommonAttributes(){
-        RoaringBitmap result = new RoaringBitmap();
-        result.add(1, data.totalAttributes + 1);
-        for(Integer x: usefulObjectList) {
-            result.and(data.objectMap.get(x).attributeList);
-        }
-        return result;
-    }
+//    private RoaringBitmap findCommonAttributes(){
+//        RoaringBitmap result = new RoaringBitmap();
+//        result.add(1, data.totalAttributes + 1);
+//        for(Integer x: usefulObjectList) {
+//            result.and(data.objectMap.get(x).attributeList);
+//        }
+//        return result;
+//    }
 
     private RoaringBitmap findCommonObjects(RoaringBitmap attributeList) {
         RoaringBitmap result = new RoaringBitmap();
@@ -59,6 +67,17 @@ public class LCM {
         RoaringBitmap result = new RoaringBitmap();
         result.add(1, data.totalAttributes + 1);
         if(objectList.getCardinality() != 0) {
+            for (Integer objectID : objectList) {
+                result.and(data.objectMap.get(objectID).attributeList);
+            }
+        }
+        return result;
+    }
+
+    private RoaringBitmap findCommonAttributes(ArrayList<Integer> objectList){
+        RoaringBitmap result = new RoaringBitmap();
+        result.add(1, data.totalAttributes + 1);
+        if(objectList.size() != 0) {
             for (Integer objectID : objectList) {
                 result.and(data.objectMap.get(objectID).attributeList);
             }
@@ -98,6 +117,7 @@ public class LCM {
 
         if(totalComputers == 1) {
             this.queue.add(root);
+            System.out.println("Distribution Completed: " + (System.nanoTime() - startTime )/1000000000.0);
             return;
         }
 
@@ -158,7 +178,11 @@ public class LCM {
 
         while(!queue.isEmpty()) {
             Node node = queue.remove();
-            usefulObjectList = findCommonObjects(node.seedConcept);
+            T.get(node.marker - 1).clear();
+            RoaringBitmap usefulObjectList = findCommonObjects(node.seedConcept);
+            for(Integer objectID: usefulObjectList) {
+                T.get(node.marker - 1).add(objectID);
+            }
             findClosedConcepts(node.seedConcept, node.marker);
         }
 
@@ -178,17 +202,33 @@ public class LCM {
         }
     }
 
+    public void occurrenceDeliver(Integer marker) {
+
+        for(Integer i = marker; i <= data.totalAttributes; i++) {
+            T.get(i).clear();
+        }
+
+        for(Integer objectID: T.get(marker - 1)) {
+            for(Integer attributeID: data.objectMap.get(objectID).attributeList) {
+                if(attributeID >= marker) {
+                    T.get(attributeID).add(objectID);
+                }
+            }
+        }
+    }
+
     public void findClosedConcepts(RoaringBitmap seedConcept, Integer marker) {
+
         totalConcepts++;
         if(marker > data.totalAttributes) {
             return;
         }
-        for(int i=marker; i<=data.totalAttributes; i++){
+        occurrenceDeliver(marker);
+
+        for(int i = data.totalAttributes; i >= marker; i--){
             if(!seedConcept.contains(i)) {
 
-                //Removing all objects that do not contain attribute i
-                ArrayList<Integer> removedObjectList = removeObjects(i);
-                RoaringBitmap childConcept = findCommonAttributes();
+                RoaringBitmap childConcept = findCommonAttributes(T.get(i));
 
                 boolean isDuplicate = false;
                 for(Integer x: childConcept) {
@@ -201,11 +241,6 @@ public class LCM {
                 }
                 if(!isDuplicate) {
                     findClosedConcepts(childConcept, i + 1);
-                }
-
-                //BackTracking (Adding Removed Objects)
-                for(Integer x: removedObjectList) {
-                    usefulObjectList.add(x);
                 }
             }
         }
