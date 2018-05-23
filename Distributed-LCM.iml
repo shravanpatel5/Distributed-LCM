@@ -47,5 +47,14 @@
         <jarDirectory url="file://$USER_HOME$/mpj-v0_44/lib" recursive="false" />
       </library>
     </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/IdeaProjects/RoaringBitmap-0.7.8.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>

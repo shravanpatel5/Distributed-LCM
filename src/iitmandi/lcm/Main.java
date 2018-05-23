@@ -7,14 +7,18 @@ import mpi.*;
 public class Main {
     public static void main(String[] args){
         String arguments[] = MPI.Init(args);
-        String fileName;
+        String fileName = "/home/shravan/Downloads/SmallMushroom.txt";
+        Integer minWorkThreshold = 8;
         if(arguments.length == 0) {
-//            fileName = "/home/shravan/Desktop/SmallMushroom.txt";
-            System.out.println("Please enter filename");
-            return;
+//            System.out.println("Please enter filename");
+//            return;
+        }
+        else if(arguments.length == 1){
+            fileName = arguments[0];
         }
         else {
             fileName = arguments[0];
+            minWorkThreshold = Integer.parseInt(arguments[1]);
         }
         Integer rank = MPI.COMM_WORLD.Rank();
         Data data = new Data();
@@ -23,7 +27,7 @@ public class Main {
         LCM.startTime = startTime;
         LCM lcm = new LCM(data);
         if(rank == 0) {
-            RequestHandler requestHandler = new RequestHandler(MPI.COMM_WORLD.Size() - 1, 8);
+            RequestHandler requestHandler = new RequestHandler(MPI.COMM_WORLD.Size() - 1, minWorkThreshold);
             requestHandler.updateWork(1, data.totalAttributes, true);
             requestHandler.start();
             System.out.println("\nNumber of Concepts = " + requestHandler.totalConcepts);

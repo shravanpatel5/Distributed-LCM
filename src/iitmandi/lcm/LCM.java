@@ -41,7 +41,186 @@ public class LCM {
             T.get(0).add(i);
         }
         workSize = TWO.pow(data.totalAttributes);
-        updateWorkSizeInLog();
+        updateWorkSizeInLog(false);
+    }
+
+    public void findClosedConcepts() {
+        totalConcepts = 0;
+        int buffer[] = new int[1];
+
+        while (true) {
+            while (!deque.isEmpty()) {
+                exploreTreeNode();
+                checkAndGiveWork(); // Giving work if any request has come
+            }
+            //System.out.println("M"+ MPI.COMM_WORLD.Rank() + " Emptied");
+
+            // Asking Giver's ID
+            send(0, 0, 1);
+
+            // Receiving Giver's ID
+            MPI.EMPTY_STATUS = MPI.COMM_WORLD.Iprobe(0,0);
+            while(MPI.EMPTY_STATUS == null) {
+                checkAndGiveWork();
+                MPI.EMPTY_STATUS = MPI.COMM_WORLD.Iprobe(0,0);
+            }
+            MPI.COMM_WORLD.Recv( buffer,0, 1, MPI.INT,0,0);
+            Integer giverID = buffer[0];
+
+            if(giverID == -1) {
+                continue;
+            }
+            else if(giverID == 0) {
+                //  This is Termination Signal
+                break;
+            }
+            else {
+//                System.out.println("Requested work to " + buffer[0]);
+                send(0, giverID, 0);
+                Node node = receiveWork(giverID);
+                if(node != null) {
+                    addNodeInDeque(node);
+                }
+                else {
+                    send(workSizeInLog, 0, 2);
+                }
+            }
+        }
+
+        System.out.println("Machine " + MPI.COMM_WORLD.Rank() + " End Time: " + (System.nanoTime() - startTime )/1000000000.0);
+
+        // Sending total concepts to Machine 0
+        send(totalConcepts, 0, 0);
+    }
+
+    public void insertChildren(RoaringBitmap seedConcept, Integer marker) {
+        totalConcepts++;
+
+        if(marker > data.totalAttributes) {
+            return;
+        }
+
+        occurrenceDeliver(marker);
+
+        for(int i = marker; i <= data.totalAttributes; i++) {
+            if(!seedConcept.contains(i)) {
+
+                RoaringBitmap childConcept = findCommonAttributes(T.get(i));
+
+                boolean isDuplicate = false;
+                for(Integer x: childConcept) {
+                    if(x >= i) {
+                        break;
+                    }
+                    if(!seedConcept.contains(x)) {
+                        isDuplicate = true;
+                    }
+                }
+                if(!isDuplicate) {
+                    Node node = new Node(childConcept, i+1);
+                    deque.addFirst(node);
+                    workSize = workSize.add(TWO.pow( data.totalAttributes - i));
+                }
+            }
+        }
+    }
+
+    public void occurrenceDeliver(Integer marker) {
+
+        for(Integer i = marker; i <= data.totalAttributes; i++) {
+            T.get(i).clear();
+        }
+
+        for(Integer objectID: T.get(marker - 1)) {
+            for(Integer attributeID: data.objectMap.get(objectID).attributeList) {
+                if(attributeID >= marker) {
+                    T.get(attributeID).add(objectID);
+                }
+            }
+        }
+    }
+
+    private Node receiveWork(Integer sourceID) {
+        int[] size = new int[1];
+        MPI.COMM_WORLD.Recv( size,0, 1, MPI.INT,sourceID,0);
+//        System.out.println("M"+ MPI.COMM_WORLD.Rank() + " Work received from " + sourceID);
+
+        if(size[0] == 0) {
+            return null;
+        }
+        int[] array = new int[size[0]];
+        MPI.COMM_WORLD.Recv( array,0, size[0], MPI.INT,sourceID,0);
+        return new Node(array);
+    }
+
+    private void giveWork(Integer destination) {
+        int[] size = new int[1];
+        if(!deque.isEmpty()) {
+            Node node = deque.removeLast();
+            workSize = workSize.subtract(TWO.pow(data.totalAttributes - node.marker + 1));
+            int[] buffer = node.toArray();
+            size[0] = buffer.length;
+            MPI.COMM_WORLD.Send( size, 0, 1, MPI.INT, destination, 0);
+            MPI.COMM_WORLD.Send( buffer, 0, buffer.length, MPI.INT, destination, 0);
+        }
+        else {
+            size[0] = 0;
+            MPI.COMM_WORLD.Send( size, 0, 1, MPI.INT, destination, 0);
+        }
+    }
+
+    private void updateWorkSizeInLog(Boolean updateGlobally) {
+        Integer logSize = (int) Math.ceil( Math.log(workSize.doubleValue()) / Math.log(2) );
+        if (workSize.compareTo(ZERO) == 0) {
+            logSize = -1;
+        }
+        if (logSize != workSizeInLog) {
+            workSizeInLog = logSize;
+            if(updateGlobally) {
+                send(workSizeInLog, 0, 0);
+            }
+        }
+    }
+
+    void exploreTreeNode() {
+        Node node = deque.removeFirst();
+        workSize = workSize.subtract(TWO.pow(data.totalAttributes - node.marker + 1));
+        insertChildren(node.seedConcept, node.marker);
+        updateWorkSizeInLog(true);
+    }
+
+    void send(int value, int destination, int tag) {
+        int buffer[] = new int[1];
+        buffer[0] = value;
+        MPI.COMM_WORLD.Isend( buffer, 0, 1, MPI.INT, destination, tag);
+    }
+
+    private void checkAndGiveWork() {
+        int buffer[] = new int[1];
+        MPI.EMPTY_STATUS = MPI.COMM_WORLD.Iprobe(MPI.ANY_SOURCE,0);
+        if(MPI.EMPTY_STATUS != null) {
+            if(MPI.EMPTY_STATUS.source != 0) {
+                MPI.COMM_WORLD.Recv( buffer,0, 1, MPI.INT,MPI.EMPTY_STATUS.source,0);
+//                System.out.println("M"+ MPI.COMM_WORLD.Rank() + " Work Request Received from " + MPI.EMPTY_STATUS.source);
+                giveWork(MPI.EMPTY_STATUS.source);
+                updateWorkSizeInLog(false);
+                send(workSizeInLog, 0, 2);
+            }
+        }
+    }
+
+    private void addNodeInDeque(Node node) {
+        deque.addFirst(node);
+        workSize = workSize.add(TWO.pow( data.totalAttributes - node.marker + 1));
+        updateWorkSizeInLog(false);
+        send(workSizeInLog, 0, 2);
+
+        // Initializing T for new node
+        T.get(node.marker - 1).clear();
+        RoaringBitmap usefulObjectList = findCommonObjects(node.seedConcept);
+        for (Integer objectID : usefulObjectList) {
+            T.get(node.marker - 1).add(objectID);
+        }
     }
 
     private RoaringBitmap findCommonObjects(RoaringBitmap attributeList) {
@@ -75,176 +254,5 @@ public class LCM {
             }
         }
         return result;
-    }
-
-    private Node receiveWork(Integer sourceID) {
-        int[] size = new int[1];
-        MPI.COMM_WORLD.Recv( size,0, 1, MPI.INT,sourceID,0);
-//        System.out.println("M"+ MPI.COMM_WORLD.Rank() + " Work received from " + sourceID);
-
-        if(size[0] == 0) {
-            return null;
-        }
-        int[] array = new int[size[0]];
-        MPI.COMM_WORLD.Recv( array,0, size[0], MPI.INT,sourceID,0);
-        return new Node(array);
-    }
-
-    private void giveWork(Integer requesterID) {
-        int[] size = new int[1];
-        if(!deque.isEmpty()) {
-            Node node = deque.removeLast();
-            workSize = workSize.subtract(TWO.pow(data.totalAttributes - node.marker + 1));
-            int[] array = node.toArray();
-            size[0] = array.length;
-            MPI.COMM_WORLD.Send( size, 0, 1, MPI.INT, requesterID, 0);
-            MPI.COMM_WORLD.Send( array, 0, array.length, MPI.INT, requesterID, 0);
-        }
-        else {
-            size[0] = 0;
-            MPI.COMM_WORLD.Send( size, 0, 1, MPI.INT, requesterID, 0);
-        }
-    }
-
-    private Boolean updateWorkSizeInLog() {
-        Integer logSize = (int) Math.ceil( Math.log(workSize.doubleValue()) / Math.log(2) );
-        if (workSize.compareTo(ZERO) == 0) {
-            logSize = -1;
-        }
-        if (logSize != workSizeInLog) {
-            workSizeInLog = logSize;
-            return true;
-        }
-        return false;
-    }
-
-    public void findClosedConcepts() {
-        totalConcepts = 0;
-        int request[] = new int[1];
-
-        while (true) {
-            while (!deque.isEmpty()) {
-                Node node = deque.removeFirst();
-                workSize = workSize.subtract(TWO.pow(data.totalAttributes - node.marker + 1));
-                insertChildren(node.seedConcept, node.marker);
-                if(updateWorkSizeInLog() == true) {
-                    request[0] = workSizeInLog;
-                    MPI.COMM_WORLD.Isend( request, 0, 1, MPI.INT, 0, 0);
-                }
-                MPI.EMPTY_STATUS = MPI.COMM_WORLD.Iprobe(MPI.ANY_SOURCE,0);
-                if(MPI.EMPTY_STATUS != null) {
-                    MPI.COMM_WORLD.Recv( request,0, 1, MPI.INT,MPI.EMPTY_STATUS.source,0);
-                    //System.out.println("M"+ MPI.COMM_WORLD.Rank() + " Work Request Received from " + MPI.EMPTY_STATUS.source);
-                    giveWork(MPI.EMPTY_STATUS.source);
-                    updateWorkSizeInLog();
-                    request[0] = workSizeInLog;
-//                    System.out.println("M"+ MPI.COMM_WORLD.Rank() + " " + request[0]);
-                    MPI.COMM_WORLD.Isend( request, 0, 1, MPI.INT, 0, 2);
-                }
-            }
-            //System.out.println("M"+ MPI.COMM_WORLD.Rank() + " Emptied");
-            MPI.COMM_WORLD.Isend( request, 0, 1, MPI.INT, 0, 1);
-            MPI.EMPTY_STATUS = MPI.COMM_WORLD.Iprobe(0,0);
-            while(MPI.EMPTY_STATUS == null) {
-                MPI.EMPTY_STATUS = MPI.COMM_WORLD.Iprobe(MPI.ANY_SOURCE,0);
-                if(MPI.EMPTY_STATUS != null) {
-                    if(MPI.EMPTY_STATUS.source != 0) {
-                        MPI.COMM_WORLD.Recv( request,0, 1, MPI.INT,MPI.EMPTY_STATUS.source,0);
-//                        System.out.println("M"+ MPI.COMM_WORLD.Rank() + " Work Request Received from " + MPI.EMPTY_STATUS.source);
-                        giveWork(MPI.EMPTY_STATUS.source);
-                        updateWorkSizeInLog();
-                        request[0] = workSizeInLog;
-                        MPI.COMM_WORLD.Isend( request, 0, 1, MPI.INT, 0, 2);
-
-                        MPI.EMPTY_STATUS = MPI.COMM_WORLD.Iprobe(0,0);
-                    }
-                    else {
-                        break;
-                    }
-                }
-            }
-            MPI.COMM_WORLD.Recv( request,0, 1, MPI.INT,0,0);
-            if(request[0] == -1) {
-                continue;
-            }
-            else if(request[0] == 0) {
-                break;
-            }
-            else {
-//                System.out.println("Requested work to " + request[0]);
-                MPI.COMM_WORLD.Send( request, 0, 1, MPI.INT, request[0], 0);
-                Node node = receiveWork(request[0]);
-                if(node != null) {
-                    deque.addFirst(node);
-                    workSize = workSize.add(TWO.pow( data.totalAttributes - node.marker + 1));
-                    updateWorkSizeInLog();
-                    request[0] = workSizeInLog;
-//                    System.out.println("M"+ MPI.COMM_WORLD.Rank() + " " + request[0]);
-                    MPI.COMM_WORLD.Isend( request, 0, 1, MPI.INT, 0, 2);
-                    T.get(node.marker - 1).clear();
-                    RoaringBitmap usefulObjectList = findCommonObjects(node.seedConcept);
-                    for (Integer objectID : usefulObjectList) {
-                        T.get(node.marker - 1).add(objectID);
-                    }
-                }
-                else {
-                    request[0] = workSizeInLog;
-                    MPI.COMM_WORLD.Isend( request, 0, 1, MPI.INT, 0, 2);
-                }
-            }
-        }
-
-        System.out.println("Machine " + MPI.COMM_WORLD.Rank() + " End Time: " + (System.nanoTime() - startTime )/1000000000.0);
-
-        int numberOfConcepts[] = new int[1];
-        numberOfConcepts[0] = totalConcepts;
-        MPI.COMM_WORLD.Send( numberOfConcepts, 0, 1, MPI.INT, 0, 0);
-    }
-
-    public void occurrenceDeliver(Integer marker) {
-
-        for(Integer i = marker; i <= data.totalAttributes; i++) {
-            T.get(i).clear();
-        }
-
-        for(Integer objectID: T.get(marker - 1)) {
-            for(Integer attributeID: data.objectMap.get(objectID).attributeList) {
-                if(attributeID >= marker) {
-                    T.get(attributeID).add(objectID);
-                }
-            }
-        }
-    }
-
-    public void insertChildren(RoaringBitmap seedConcept, Integer marker) {
-        totalConcepts++;
-
-        if(marker > data.totalAttributes) {
-            return;
-        }
-
-        occurrenceDeliver(marker);
-
-        for(int i = marker; i <= data.totalAttributes; i++) {
-            if(!seedConcept.contains(i)) {
-
-                RoaringBitmap childConcept = findCommonAttributes(T.get(i));
-
-                boolean isDuplicate = false;
-                for(Integer x: childConcept) {
-                    if(x >= i) {
-                        break;
-                    }
-                    if(!seedConcept.contains(x)) {
-                        isDuplicate = true;
-                    }
-                }
-                if(!isDuplicate) {
-                    Node node = new Node(childConcept, i+1);
-                    deque.addFirst(node);
-                    workSize = workSize.add(TWO.pow( data.totalAttributes - i));
-                }
-            }
-        }
     }
 }
