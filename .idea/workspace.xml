@@ -7,9 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c8b285c-aabc-4ac9-986f-7ccadfdb2f34" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Distributed_LCM_jar.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/Distributed_LCM_jar.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/Distributed-LCM.iml" afterPath="$PROJECT_DIR$/Distributed-LCM.iml" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Distributed_LCM_jar/Distributed-LCM.jar" afterPath="$PROJECT_DIR$/out/artifacts/Distributed_LCM_jar/Distributed-LCM.jar" />
+      <change beforePath="$PROJECT_DIR$/out/production/Distributed-LCM/iitmandi/lcm/LCM.class" afterPath="$PROJECT_DIR$/out/production/Distributed-LCM/iitmandi/lcm/LCM.class" />
       <change beforePath="$PROJECT_DIR$/out/production/Distributed-LCM/iitmandi/lcm/Main.class" afterPath="$PROJECT_DIR$/out/production/Distributed-LCM/iitmandi/lcm/Main.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Distributed-LCM/iitmandi/lcm/RequestHandler.class" afterPath="$PROJECT_DIR$/out/production/Distributed-LCM/iitmandi/lcm/RequestHandler.class" />
       <change beforePath="$PROJECT_DIR$/src/iitmandi/lcm/LCM.java" afterPath="$PROJECT_DIR$/src/iitmandi/lcm/LCM.java" />
       <change beforePath="$PROJECT_DIR$/src/iitmandi/lcm/Main.java" afterPath="$PROJECT_DIR$/src/iitmandi/lcm/Main.java" />
       <change beforePath="$PROJECT_DIR$/src/iitmandi/lcm/RequestHandler.java" afterPath="$PROJECT_DIR$/src/iitmandi/lcm/RequestHandler.java" />
@@ -24,11 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LCM.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LCM.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/iitmandi/lcm/LCM.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1573">
-              <caret line="149" column="9" lean-forward="true" selection-start-line="149" selection-start-column="9" selection-end-line="149" selection-end-column="9" />
+            <state relative-caret-position="499">
+              <caret line="247" column="56" lean-forward="false" selection-start-line="247" selection-start-column="56" selection-end-line="247" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -39,8 +43,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/iitmandi/lcm/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="53">
-              <caret line="24" column="36" lean-forward="true" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
+            <state relative-caret-position="108">
+              <caret line="9" column="57" lean-forward="false" selection-start-line="9" selection-start-column="57" selection-end-line="9" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -48,27 +52,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Attribute.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/iitmandi/lcm/model/Attribute.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="2" column="24" lean-forward="false" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RequestHandler.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RequestHandler.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/iitmandi/lcm/RequestHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="114" column="85" lean-forward="true" selection-start-line="114" selection-start-column="85" selection-end-line="114" selection-end-column="85" />
+            <state relative-caret-position="18">
+              <caret line="82" column="12" lean-forward="true" selection-start-line="82" selection-start-column="12" selection-end-line="82" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1844#1845#0" expanded="true" />
-                <element signature="e#1888#1889#0" expanded="true" />
-                <element signature="e#1927#1928#0" expanded="true" />
-                <element signature="e#1969#1970#0" expanded="true" />
+                <element signature="e#1806#1807#0" expanded="true" />
+                <element signature="e#1850#1851#0" expanded="true" />
+                <element signature="e#1889#1890#0" expanded="true" />
+                <element signature="e#1931#1932#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -105,9 +99,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/iitmandi/lcm/LCM.java" />
         <option value="$PROJECT_DIR$/src/iitmandi/lcm/Main.java" />
         <option value="$PROJECT_DIR$/src/iitmandi/lcm/RequestHandler.java" />
-        <option value="$PROJECT_DIR$/src/iitmandi/lcm/LCM.java" />
       </list>
     </option>
   </component>
@@ -184,10 +178,10 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/RoaringBitmap-0.7.8.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../RoaringBitmap-0.7.8.jar!/" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///home/shravan/IdeaProjects/Distributed-LCM/src/iitmandi/lcm/Main.java" />
   </component>
   <component name="RunDashboard">
@@ -213,7 +207,7 @@
     <configuration name="Main" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="iitmandi.lcm.Main" />
-      <option name="VM_PARAMETERS" value="-jar ${MPJ_HOME}/lib/starter.jar -np 6" />
+      <option name="VM_PARAMETERS" value="-jar ${MPJ_HOME}/lib/starter.jar -np 2" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -316,12 +310,12 @@
       <updated>1525790908846</updated>
       <workItem from="1525790914202" duration="28937000" />
       <workItem from="1526411654558" duration="675000" />
-      <workItem from="1527095170873" duration="5930000" />
+      <workItem from="1527095170873" duration="10483000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35542000" />
+    <option name="totallyTimeSpent" value="40095000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1366" height="743" extended-state="6" />
@@ -329,13 +323,13 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32755905" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37007874" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3183183" sideWeight="0.502682" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36220473" sideWeight="0.497318" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32913387" sideWeight="0.497318" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -393,10 +387,10 @@
           <caret line="56" column="28" lean-forward="false" selection-start-line="56" selection-start-column="28" selection-end-line="56" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1844#1845#0" expanded="true" />
-            <element signature="e#1888#1889#0" expanded="true" />
-            <element signature="e#1927#1928#0" expanded="true" />
-            <element signature="e#1969#1970#0" expanded="true" />
+            <element signature="e#1806#1807#0" expanded="true" />
+            <element signature="e#1850#1851#0" expanded="true" />
+            <element signature="e#1889#1890#0" expanded="true" />
+            <element signature="e#1931#1932#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -425,10 +419,10 @@
           <caret line="56" column="28" lean-forward="false" selection-start-line="56" selection-start-column="28" selection-end-line="56" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1844#1845#0" expanded="true" />
-            <element signature="e#1888#1889#0" expanded="true" />
-            <element signature="e#1927#1928#0" expanded="true" />
-            <element signature="e#1969#1970#0" expanded="true" />
+            <element signature="e#1806#1807#0" expanded="true" />
+            <element signature="e#1850#1851#0" expanded="true" />
+            <element signature="e#1889#1890#0" expanded="true" />
+            <element signature="e#1931#1932#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -475,18 +469,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/iitmandi/lcm/LCM.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="499">
+          <caret line="247" column="56" lean-forward="false" selection-start-line="247" selection-start-column="56" selection-end-line="247" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/iitmandi/lcm/model/Attribute.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="24" lean-forward="false" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+        <state relative-caret-position="108">
+          <caret line="6" column="10" lean-forward="false" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/iitmandi/lcm/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="53">
-          <caret line="24" column="36" lean-forward="true" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
+        <state relative-caret-position="108">
+          <caret line="9" column="57" lean-forward="false" selection-start-line="9" selection-start-column="57" selection-end-line="9" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -495,24 +499,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/iitmandi/lcm/RequestHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="114" column="85" lean-forward="true" selection-start-line="114" selection-start-column="85" selection-end-line="114" selection-end-column="85" />
+        <state relative-caret-position="18">
+          <caret line="82" column="12" lean-forward="true" selection-start-line="82" selection-start-column="12" selection-end-line="82" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1844#1845#0" expanded="true" />
-            <element signature="e#1888#1889#0" expanded="true" />
-            <element signature="e#1927#1928#0" expanded="true" />
-            <element signature="e#1969#1970#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/iitmandi/lcm/LCM.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1573">
-          <caret line="149" column="9" lean-forward="true" selection-start-line="149" selection-start-column="9" selection-end-line="149" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1806#1807#0" expanded="true" />
+            <element signature="e#1850#1851#0" expanded="true" />
+            <element signature="e#1889#1890#0" expanded="true" />
+            <element signature="e#1931#1932#0" expanded="true" />
           </folding>
         </state>
       </provider>

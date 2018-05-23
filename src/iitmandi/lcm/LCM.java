@@ -82,7 +82,7 @@ public class LCM {
                     addNodeInDeque(node);
                 }
                 else {
-                    send(workSizeInLog, 0, 2);
+                    send(workSizeInLog, 0, 0);
                 }
             }
         }
@@ -90,7 +90,7 @@ public class LCM {
         System.out.println("Machine " + MPI.COMM_WORLD.Rank() + " End Time: " + (System.nanoTime() - startTime )/1000000000.0);
 
         // Sending total concepts to Machine 0
-        send(totalConcepts, 0, 0);
+        send(totalConcepts, 0, 3);
     }
 
     public void insertChildren(RoaringBitmap seedConcept, Integer marker) {
@@ -204,7 +204,7 @@ public class LCM {
 //                System.out.println("M"+ MPI.COMM_WORLD.Rank() + " Work Request Received from " + MPI.EMPTY_STATUS.source);
                 giveWork(MPI.EMPTY_STATUS.source);
                 updateWorkSizeInLog(false);
-                send(workSizeInLog, 0, 2);
+                send(workSizeInLog, 0, 0);
             }
         }
     }
@@ -213,7 +213,7 @@ public class LCM {
         deque.addFirst(node);
         workSize = workSize.add(TWO.pow( data.totalAttributes - node.marker + 1));
         updateWorkSizeInLog(false);
-        send(workSizeInLog, 0, 2);
+        send(workSizeInLog, 0, 0);
 
         // Initializing T for new node
         T.get(node.marker - 1).clear();

@@ -7,7 +7,7 @@ import mpi.*;
 public class Main {
     public static void main(String[] args){
         String arguments[] = MPI.Init(args);
-        String fileName = "/home/shravan/Downloads/SmallMushroom.txt";
+        String fileName = "/home/shravan/Downloads/census.txt";
         Integer minWorkThreshold = 8;
         if(arguments.length == 0) {
 //            System.out.println("Please enter filename");
@@ -28,7 +28,7 @@ public class Main {
         LCM lcm = new LCM(data);
         if(rank == 0) {
             RequestHandler requestHandler = new RequestHandler(MPI.COMM_WORLD.Size() - 1, minWorkThreshold);
-            requestHandler.updateWork(1, data.totalAttributes, true);
+            requestHandler.updateWork(1, data.totalAttributes);
             requestHandler.start();
             System.out.println("\nNumber of Concepts = " + requestHandler.totalConcepts);
             double endTime = System.nanoTime();

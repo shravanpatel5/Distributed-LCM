@@ -10,15 +10,6 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../RoaringBitmap-0.7.8.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
           <root url="jar://$USER_HOME$/mpj-v0_44/lib/mpi.jar!/" />
         </CLASSES>
         <JAVADOC />
@@ -50,7 +41,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/IdeaProjects/RoaringBitmap-0.7.8.jar!/" />
+          <root url="jar://$MODULE_DIR$/../RoaringBitmap-0.7.8.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

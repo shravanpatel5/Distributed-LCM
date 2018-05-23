@@ -25,7 +25,6 @@
       <element id="extracted-dir" path="$USER_HOME$/mpj-v0_44/lib/commons-io-2.4.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/mpj-v0_44/lib/commons-cli-1.2.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/mpj-v0_44/lib/commons-codec-1.8.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/../RoaringBitmap-0.7.8.jar" path-in-jar="/" />
       <element id="file-copy" path="$USER_HOME$/mpj-v0_44/lib/mpi.jar" />
       <element id="file-copy" path="$USER_HOME$/mpj-v0_44/lib/mpj.jar" />
       <element id="file-copy" path="$USER_HOME$/mpj-v0_44/lib/xdev.jar" />
@@ -49,6 +48,7 @@
       <element id="file-copy" path="$USER_HOME$/mpj-v0_44/lib/commons-cli-1.2.jar" />
       <element id="file-copy" path="$USER_HOME$/mpj-v0_44/lib/commons-codec-1.8.jar" />
       <element id="file-copy" path="$PROJECT_DIR$/../RoaringBitmap-0.7.8.jar" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../RoaringBitmap-0.7.8.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
