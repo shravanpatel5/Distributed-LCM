@@ -20,6 +20,9 @@ public class LCM {
     private Data data;
     private Deque<Node> deque;
     private ArrayList<ArrayList<Integer>> T;
+    private Integer countOfWorkRequest;
+    private long idleTime;
+    private long workTransferTime;
 
     public LCM(Data data) {
         this.data = data;
@@ -30,6 +33,9 @@ public class LCM {
         }
         workSizeInLog = -1;
         workSize = new BigInteger("0");
+        countOfWorkRequest = 0;
+        idleTime = 0;
+        workTransferTime = 0;
     }
 
     public void insertInitialWork() {
@@ -53,10 +59,12 @@ public class LCM {
                 exploreTreeNode();
                 checkAndGiveWork(); // Giving work if any request has come
             }
-            //System.out.println("M"+ MPI.COMM_WORLD.Rank() + " Emptied");
+//            System.out.println("M"+ MPI.COMM_WORLD.Rank() + " Emptied");
 
             // Asking Giver's ID
             send(0, 0, 1);
+
+            long startTime = System.nanoTime();
 
             // Receiving Giver's ID
             MPI.EMPTY_STATUS = MPI.COMM_WORLD.Iprobe(0,0);
@@ -64,6 +72,11 @@ public class LCM {
                 checkAndGiveWork();
                 MPI.EMPTY_STATUS = MPI.COMM_WORLD.Iprobe(0,0);
             }
+
+            long endTime = System.nanoTime();
+
+            idleTime += endTime - startTime;
+
             MPI.COMM_WORLD.Recv( buffer,0, 1, MPI.INT,0,0);
             Integer giverID = buffer[0];
 
@@ -76,6 +89,7 @@ public class LCM {
             }
             else {
 //                System.out.println("Requested work to " + buffer[0]);
+                countOfWorkRequest++;
                 send(0, giverID, 0);
                 Node node = receiveWork(giverID);
                 if(node != null) {
@@ -87,7 +101,7 @@ public class LCM {
             }
         }
 
-        System.out.println("Machine " + MPI.COMM_WORLD.Rank() + " End Time: " + (System.nanoTime() - startTime )/1000000000.0);
+        System.out.println("Machine " + MPI.COMM_WORLD.Rank() + "\n\t End Time: " + (System.nanoTime() - startTime )/1000000000.0 + "\n\t Count of requesting work: " + countOfWorkRequest + "\n\t Idle Time: " + idleTime/1000000000.0 + "\n\t Work Transfer Time: " + workTransferTime/1000000000.0);
 
         // Sending total concepts to Machine 0
         send(totalConcepts, 0, 3);
@@ -149,19 +163,27 @@ public class LCM {
             return null;
         }
         int[] array = new int[size[0]];
+        long startTime = System.nanoTime();
         MPI.COMM_WORLD.Recv( array,0, size[0], MPI.INT,sourceID,0);
+        long endTime = System.nanoTime();
+        workTransferTime += endTime - startTime;
         return new Node(array);
     }
 
     private void giveWork(Integer destination) {
         int[] size = new int[1];
-        if(!deque.isEmpty()) {
+        if(deque.size() > 1) {
+            Node tempNode = deque.removeLast();
             Node node = deque.removeLast();
+            deque.addLast(tempNode);
             workSize = workSize.subtract(TWO.pow(data.totalAttributes - node.marker + 1));
             int[] buffer = node.toArray();
             size[0] = buffer.length;
+            long startTime = System.nanoTime();
             MPI.COMM_WORLD.Send( size, 0, 1, MPI.INT, destination, 0);
             MPI.COMM_WORLD.Send( buffer, 0, buffer.length, MPI.INT, destination, 0);
+            long endTime = System.nanoTime();
+            workTransferTime += endTime - startTime;
         }
         else {
             size[0] = 0;

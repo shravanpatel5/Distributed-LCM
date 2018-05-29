@@ -38,8 +38,9 @@ public class RequestHandler {
     private Integer numberOfRequesters;
     public Integer totalConcepts;
     private ArrayList<Integer> workList;
-    TreeSet<Pair> workTree;
-    Integer minWorkThreshold;
+    private TreeSet<Pair> workTree;
+    private Integer minWorkThreshold;
+    public Integer countOfWorkRequest;
 
     public RequestHandler(Integer numberOfRequesters, Integer minWorkThreshold) {
         this.totalConcepts = 0;
@@ -52,6 +53,7 @@ public class RequestHandler {
             workTree.add(new Pair(i, -1));
             workList.add(-1);
         }
+        this.countOfWorkRequest = 0;
     }
 
     private void printTree() {
@@ -88,7 +90,7 @@ public class RequestHandler {
         while(true) {
             MPI.EMPTY_STATUS = MPI.COMM_WORLD.Recv( buffer, 0, 1, MPI.INT, MPI.ANY_SOURCE, MPI.ANY_TAG);
             Integer requesterID = MPI.EMPTY_STATUS.source;
-//            System.out.println(MPI.EMPTY_STATUS.tag + " " + requesterID);
+//            System.out.println(MPI.EMPTY_STATUS.tag + " " + requesterID + " " + maxWork());
             if( MPI.EMPTY_STATUS.tag == 0) {
                 //System.out.println("Update Request from " + requesterID + " New Work " + buffer[0]);
                 if(!isTerminated) {
@@ -96,7 +98,7 @@ public class RequestHandler {
                 }
             }
             else if(MPI.EMPTY_STATUS.tag == 1) {
-                //System.out.println("Work Request from " + requesterID);
+//                System.out.println("Work Request from " + requesterID);
                 if(isTerminated == true) {
 //                    System.out.println("Sent Termination Signal to " + requesterID);
                     countOfTerminationSignal++;
@@ -105,12 +107,13 @@ public class RequestHandler {
                 }
                 else {
                     Integer giverID = IDWithMaxWork();
-                    //System.out.println("Found giverID " + giverID);
+//                    System.out.println("Found giverID " + giverID);
                     if(giverID == requesterID) {
                         buffer[0] = -1;
                         MPI.COMM_WORLD.Send( buffer, 0, 1, MPI.INT, requesterID, 0);
                     }
                     else {
+                        countOfWorkRequest++;
                         buffer[0] = giverID;
                         MPI.COMM_WORLD.Send(buffer, 0, 1, MPI.INT, requesterID, 0);
                         //System.out.println("Sent giverID " + giverID);

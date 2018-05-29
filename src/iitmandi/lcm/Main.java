@@ -7,7 +7,7 @@ import mpi.*;
 public class Main {
     public static void main(String[] args){
         String arguments[] = MPI.Init(args);
-        String fileName = "/home/shravan/Downloads/census.txt";
+        String fileName = "/home/shravan/Downloads/SmallMushroom.txt";
         Integer minWorkThreshold = 8;
         if(arguments.length == 0) {
 //            System.out.println("Please enter filename");
@@ -30,7 +30,8 @@ public class Main {
             RequestHandler requestHandler = new RequestHandler(MPI.COMM_WORLD.Size() - 1, minWorkThreshold);
             requestHandler.updateWork(1, data.totalAttributes);
             requestHandler.start();
-            System.out.println("\nNumber of Concepts = " + requestHandler.totalConcepts);
+            System.out.println("\n\nNumber of Concepts = " + requestHandler.totalConcepts);
+            System.out.println("Number of Work Transfer: "+ requestHandler.countOfWorkRequest);
             double endTime = System.nanoTime();
             System.out.println("Time Taken: "+ (endTime - startTime)/1000000000.0 + " seconds");
         }
