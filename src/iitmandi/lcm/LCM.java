@@ -12,17 +12,17 @@ public class LCM {
 
     private BigInteger workSize;
     private Integer workSizeInLog;
-    private static BigInteger ZERO = new BigInteger("0");
-    private static BigInteger ONE = new BigInteger("1");
-    private static BigInteger TWO = new BigInteger("2");
+    private BigInteger ZERO = new BigInteger("0");
+    private BigInteger TWO = new BigInteger("2");
     public int totalConcepts;
-    public static double startTime;
+    public double startTime;
     private Data data;
     private Deque<Node> deque;
     private ArrayList<ArrayList<Integer>> T;
     private Integer countOfWorkRequest;
     private long idleTime;
     private long workTransferTime;
+    public Boolean giveLastWork;
 
     public LCM(Data data) {
         this.data = data;
@@ -59,7 +59,6 @@ public class LCM {
                 exploreTreeNode();
                 checkAndGiveWork(); // Giving work if any request has come
             }
-//            System.out.println("M"+ MPI.COMM_WORLD.Rank() + " Emptied");
 
             // Asking Giver's ID
             send(0, 0, 1);
@@ -74,7 +73,6 @@ public class LCM {
             }
 
             long endTime = System.nanoTime();
-
             idleTime += endTime - startTime;
 
             MPI.COMM_WORLD.Recv( buffer,0, 1, MPI.INT,0,0);
@@ -88,16 +86,15 @@ public class LCM {
                 break;
             }
             else {
-//                System.out.println("Requested work to " + buffer[0]);
                 countOfWorkRequest++;
                 send(0, giverID, 0);
                 Node node = receiveWork(giverID);
                 if(node != null) {
                     addNodeInDeque(node);
+                    workSize = workSize.add(TWO.pow( data.totalAttributes - node.marker + 1));
+                    updateWorkSizeInLog(false);
                 }
-                else {
-                    send(workSizeInLog, 0, 0);
-                }
+                send(workSizeInLog, 0, 2);
             }
         }
 
@@ -109,13 +106,10 @@ public class LCM {
 
     public void insertChildren(RoaringBitmap seedConcept, Integer marker) {
         totalConcepts++;
-
         if(marker > data.totalAttributes) {
             return;
         }
-
         occurrenceDeliver(marker);
-
         for(int i = marker; i <= data.totalAttributes; i++) {
             if(!seedConcept.contains(i)) {
 
@@ -140,11 +134,9 @@ public class LCM {
     }
 
     public void occurrenceDeliver(Integer marker) {
-
         for(Integer i = marker; i <= data.totalAttributes; i++) {
             T.get(i).clear();
         }
-
         for(Integer objectID: T.get(marker - 1)) {
             for(Integer attributeID: data.objectMap.get(objectID).attributeList) {
                 if(attributeID >= marker) {
@@ -157,8 +149,6 @@ public class LCM {
     private Node receiveWork(Integer sourceID) {
         int[] size = new int[1];
         MPI.COMM_WORLD.Recv( size,0, 1, MPI.INT,sourceID,0);
-//        System.out.println("M"+ MPI.COMM_WORLD.Rank() + " Work received from " + sourceID);
-
         if(size[0] == 0) {
             return null;
         }
@@ -170,12 +160,31 @@ public class LCM {
         return new Node(array);
     }
 
-    private void giveWork(Integer destination) {
+    private void giveSecondLastWork(Integer destination) {
         int[] size = new int[1];
         if(deque.size() > 1) {
-            Node tempNode = deque.removeLast();
+            Node lastNode = deque.removeLast();
             Node node = deque.removeLast();
-            deque.addLast(tempNode);
+            deque.addLast(lastNode);
+            workSize = workSize.subtract(TWO.pow(data.totalAttributes - node.marker + 1));
+            int[] buffer = node.toArray();
+            size[0] = buffer.length;
+            long startTime = System.nanoTime();
+            MPI.COMM_WORLD.Send( size, 0, 1, MPI.INT, destination, 0);
+            MPI.COMM_WORLD.Send( buffer, 0, buffer.length, MPI.INT, destination, 0);
+            long endTime = System.nanoTime();
+            workTransferTime += endTime - startTime;
+        }
+        else {
+            size[0] = 0;
+            MPI.COMM_WORLD.Send( size, 0, 1, MPI.INT, destination, 0);
+        }
+    }
+
+    private void giveLastWork(Integer destination) {
+        int[] size = new int[1];
+        if(deque.size() > 1) {
+            Node node = deque.removeLast();
             workSize = workSize.subtract(TWO.pow(data.totalAttributes - node.marker + 1));
             int[] buffer = node.toArray();
             size[0] = buffer.length;
@@ -223,19 +232,20 @@ public class LCM {
         if(MPI.EMPTY_STATUS != null) {
             if(MPI.EMPTY_STATUS.source != 0) {
                 MPI.COMM_WORLD.Recv( buffer,0, 1, MPI.INT,MPI.EMPTY_STATUS.source,0);
-//                System.out.println("M"+ MPI.COMM_WORLD.Rank() + " Work Request Received from " + MPI.EMPTY_STATUS.source);
-                giveWork(MPI.EMPTY_STATUS.source);
+                if(giveLastWork == true) {
+                    giveLastWork(MPI.EMPTY_STATUS.source);
+                }
+                else {
+                    giveSecondLastWork(MPI.EMPTY_STATUS.source);
+                }
                 updateWorkSizeInLog(false);
-                send(workSizeInLog, 0, 0);
+                send(workSizeInLog, 0, 2);
             }
         }
     }
 
     private void addNodeInDeque(Node node) {
         deque.addFirst(node);
-        workSize = workSize.add(TWO.pow( data.totalAttributes - node.marker + 1));
-        updateWorkSizeInLog(false);
-        send(workSizeInLog, 0, 0);
 
         // Initializing T for new node
         T.get(node.marker - 1).clear();

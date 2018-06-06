@@ -41,9 +41,10 @@ public class RequestHandler {
     private TreeSet<Pair> workTree;
     private Integer minWorkThreshold;
     public Integer countOfWorkRequest;
+    public Boolean blocking;
 
     public RequestHandler(Integer numberOfRequesters, Integer minWorkThreshold) {
-        this.totalConcepts = 0;
+        totalConcepts = 0;
         this.numberOfRequesters = numberOfRequesters;
         this.minWorkThreshold = minWorkThreshold;
         workTree = new TreeSet<Pair>(new PairComparator());
@@ -53,22 +54,13 @@ public class RequestHandler {
             workTree.add(new Pair(i, -1));
             workList.add(-1);
         }
-        this.countOfWorkRequest = 0;
-    }
-
-    private void printTree() {
-        for(Pair p: workTree) {
-            System.out.print("[" + p.ID + "," + p.work + "] ");
-        }
-        System.out.println();
+        countOfWorkRequest = 0;
     }
 
     public void updateWork(Integer ID, Integer work) {
-//        if(workList.get(ID) > work) {
             workTree.remove(new Pair(ID, workList.get(ID)));
             workList.set(ID, work);
             workTree.add(new Pair(ID, work));
-//        }
     }
 
     private Integer maxWork() {
@@ -80,34 +72,29 @@ public class RequestHandler {
     }
 
     public void start() {
+        Integer countOfTerminationSignal = 0;
+        int buffer[] = new int[1];
+        Integer numberOfTerminatedRequesters = 0;
         Boolean isTerminated = false;
         if(numberOfRequesters == 1) {
             isTerminated = true;
         }
-        Integer countOfTerminationSignal = 0;
-        int buffer[] = new int[1];
-        Integer conceptReceived = 0;
         while(true) {
             MPI.EMPTY_STATUS = MPI.COMM_WORLD.Recv( buffer, 0, 1, MPI.INT, MPI.ANY_SOURCE, MPI.ANY_TAG);
             Integer requesterID = MPI.EMPTY_STATUS.source;
-//            System.out.println(MPI.EMPTY_STATUS.tag + " " + requesterID + " " + maxWork());
-            if( MPI.EMPTY_STATUS.tag == 0) {
-                //System.out.println("Update Request from " + requesterID + " New Work " + buffer[0]);
+            if( MPI.EMPTY_STATUS.tag == 0 || MPI.EMPTY_STATUS.tag == 2) {
                 if(!isTerminated) {
                     updateWork(requesterID, buffer[0]);
                 }
             }
             else if(MPI.EMPTY_STATUS.tag == 1) {
-//                System.out.println("Work Request from " + requesterID);
                 if(isTerminated == true) {
-//                    System.out.println("Sent Termination Signal to " + requesterID);
                     countOfTerminationSignal++;
                     buffer[0] = 0;
                     MPI.COMM_WORLD.Send( buffer, 0, 1, MPI.INT, requesterID, 0);
                 }
                 else {
                     Integer giverID = IDWithMaxWork();
-//                    System.out.println("Found giverID " + giverID);
                     if(giverID == requesterID) {
                         buffer[0] = -1;
                         MPI.COMM_WORLD.Send( buffer, 0, 1, MPI.INT, requesterID, 0);
@@ -116,17 +103,23 @@ public class RequestHandler {
                         countOfWorkRequest++;
                         buffer[0] = giverID;
                         MPI.COMM_WORLD.Send(buffer, 0, 1, MPI.INT, requesterID, 0);
-                        //System.out.println("Sent giverID " + giverID);
-
-                        Integer estimatedDonatedWork = workList.get(giverID) - 1;
-                        updateWork(giverID, estimatedDonatedWork - 1);
-                        updateWork(requesterID, estimatedDonatedWork );
+                        if(!blocking) {
+                            Integer estimatedDonatedWork = workList.get(giverID) - 1;
+                            updateWork(giverID, estimatedDonatedWork - 1);
+                            updateWork(requesterID, estimatedDonatedWork );
+                        }
+                        else {
+                            MPI.COMM_WORLD.Recv(buffer, 0, 1, MPI.INT, giverID, 2);
+                            updateWork(giverID, buffer[0]);
+                            MPI.COMM_WORLD.Recv(buffer, 0, 1, MPI.INT, requesterID, 2);
+                            updateWork(requesterID, buffer[0]);
+                        }
                     }
                 }
             }
             else {
                 totalConcepts += buffer[0];
-                conceptReceived++;
+                numberOfTerminatedRequesters++;
             }
             if(!isTerminated && maxWork() < minWorkThreshold) {
                 isTerminated = true;
@@ -135,7 +128,7 @@ public class RequestHandler {
                 break;
             }
         }
-        for (Integer i = 1; i <= numberOfRequesters - conceptReceived; i++) {
+        for (Integer i = 1; i <= numberOfRequesters - numberOfTerminatedRequesters; i++) {
             MPI.COMM_WORLD.Recv( buffer, 0, 1, MPI.INT, MPI.ANY_SOURCE, 3);
             totalConcepts += buffer[0];
         }
