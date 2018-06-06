@@ -7,45 +7,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/mpj-v0_44/lib/mpi.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/mpj-v0_44/lib/mpj.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="file://$USER_HOME$/mpj-v0_44/lib" />
-        </CLASSES>
-        <JAVADOC />
-        <NATIVE>
-          <root url="file://$USER_HOME$/mpj-v0_44/lib" />
-        </NATIVE>
-        <SOURCES />
-        <jarDirectory url="file://$USER_HOME$/mpj-v0_44/lib" recursive="false" />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../RoaringBitmap-0.7.8.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
+    <orderEntry type="library" name="RoaringBitmap-0.7.8" level="project" />
+    <orderEntry type="library" name="mpi" level="project" />
+    <orderEntry type="library" name="mpj" level="project" />
   </component>
 </module>

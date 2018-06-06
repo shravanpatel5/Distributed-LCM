@@ -1,0 +1,787 @@
+ DEBUG mpjdaemon  - Accepting connection ..
+ DEBUG mpjdaemon  - Job Started
+ DEBUG mpjdaemon  - Ticket length 0
+ DEBUG mpjdaemon  - Accepting connection ..
+ DEBUG mpjdaemon  - Job Started
+ DEBUG mpjdaemon  - Ticket length 888
+ DEBUG mpjdaemon  - <MPJProcessInfo>
+    <TicketID>02539f1d-a509-40b5-b9a7-31eea09e86c0</TicketID>
+    <ClassPath>/home/shravan</ClassPath>
+    <MasterNode>VM1</MasterNode>
+    <MasterPort>40002</MasterPort>
+    <ProcessCount>1</ProcessCount>
+    <StartingRank>0</StartingRank>
+    <JvmArgs/>
+    <WorkingDirectory>/home/shravan</WorkingDirectory>
+    <ZippedSource>false</ZippedSource>
+    <MainClass>HelloWorld</MainClass>
+    <DeviceName>niodev</DeviceName>
+    <ConfFileContents>#temp line;#Number of Processes;1;#Protocol Switch Limit;131072;#Entry, HOST_NAME/IP@READPORT@WRITEPORT@RANK@DEBUGPORT;10.7.9.235@0@0@0@0</ConfFileContents>
+    <AppArgs/>
+    <UserID>shravan</UserID>
+    <NetworkProcessCount>-1</NetworkProcessCount>
+    <TotalProcessCount>-1</TotalProcessCount>
+    <NetworkDevice>niodev</NetworkDevice>
+    <MPJ_HOME>/home/shravan/mpj-v0_44</MPJ_HOME>
+    <Debug>false</Debug>
+    <DebugPort>24500</DebugPort>
+    <Profiler>false</Profiler>
+</MPJProcessInfo>
+
+ DEBUG mpjdaemon  - configFilePath
+ DEBUG mpjdaemon  - Config file created :
+ DEBUG mpjdaemon  - modified: jArgs[0]=-cp
+ DEBUG mpjdaemon  - modified: jArgs[1]=.:/home/shravan/mpj-v0_44/lib/loader1.jar:/home/shravan/mpj-v0_44/lib/mpj.jar:/home/shravan/mpj-v0_44/lib/log4j-1.2.11.jar:/home/shravan/mpj-v0_44/lib/wrapper.jar:/home/shravan:/home/shravan
+ DEBUG mpjdaemon  - arguments[0] = java
+ DEBUG mpjdaemon  - arguments[1] = -cp
+ DEBUG mpjdaemon  - arguments[2] = .:/home/shravan/mpj-v0_44/lib/loader1.jar:/home/shravan/mpj-v0_44/lib/mpj.jar:/home/shravan/mpj-v0_44/lib/log4j-1.2.11.jar:/home/shravan/mpj-v0_44/lib/wrapper.jar:/home/shravan:/home/shravan
+ DEBUG mpjdaemon  - arguments[3] = runtime.daemon.Wrapper
+ DEBUG mpjdaemon  - arguments[4] = #temp|line;#Number|of|Processes;1;#Protocol|Switch|Limit;131072;#Entry,|HOST_NAME/IP@READPORT@WRITEPORT@RANK@DEBUGPORT;10.7.9.235@0@0@0@0
+ DEBUG mpjdaemon  - arguments[5] = 1
+ DEBUG mpjdaemon  - arguments[6] = niodev
+ DEBUG mpjdaemon  - arguments[7] = VM1
+ DEBUG mpjdaemon  - arguments[8] = 40002
+ DEBUG mpjdaemon  - arguments[9] = 0
+ DEBUG mpjdaemon  - arguments[10] = HelloWorld
+ DEBUG mpjdaemon  - starting the process 
+ DEBUG mpjdaemon  - started the process 
+ DEBUG mpjdaemon  - outputting ...
+ DEBUG mpjdaemon  - Stopping the output
+ DEBUG mpjdaemon  - Job Finished
+ DEBUG mpjdaemon  - 
+
+ ** .. execution ends .. ** 
+
+
+ DEBUG mpjdaemon  - Accepting connection ..
+ DEBUG mpjdaemon  - Job Started
+ DEBUG mpjdaemon  - Ticket length 888
+ DEBUG mpjdaemon  - <MPJProcessInfo>
+    <TicketID>15dcceba-85d3-4430-b2b6-c3438d8a19e2</TicketID>
+    <ClassPath>/home/shravan</ClassPath>
+    <MasterNode>VM1</MasterNode>
+    <MasterPort>40002</MasterPort>
+    <ProcessCount>1</ProcessCount>
+    <StartingRank>0</StartingRank>
+    <JvmArgs/>
+    <WorkingDirectory>/home/shravan</WorkingDirectory>
+    <ZippedSource>false</ZippedSource>
+    <MainClass>HelloWorld</MainClass>
+    <DeviceName>niodev</DeviceName>
+    <ConfFileContents>#temp line;#Number of Processes;1;#Protocol Switch Limit;131072;#Entry, HOST_NAME/IP@READPORT@WRITEPORT@RANK@DEBUGPORT;10.7.9.235@0@0@0@0</ConfFileContents>
+    <AppArgs/>
+    <UserID>shravan</UserID>
+    <NetworkProcessCount>-1</NetworkProcessCount>
+    <TotalProcessCount>-1</TotalProcessCount>
+    <NetworkDevice>niodev</NetworkDevice>
+    <MPJ_HOME>/home/shravan/mpj-v0_44</MPJ_HOME>
+    <Debug>false</Debug>
+    <DebugPort>24500</DebugPort>
+    <Profiler>false</Profiler>
+</MPJProcessInfo>
+
+ DEBUG mpjdaemon  - configFilePath
+ DEBUG mpjdaemon  - Config file created :
+ DEBUG mpjdaemon  - modified: jArgs[0]=-cp
+ DEBUG mpjdaemon  - modified: jArgs[1]=.:/home/shravan/mpj-v0_44/lib/loader1.jar:/home/shravan/mpj-v0_44/lib/mpj.jar:/home/shravan/mpj-v0_44/lib/log4j-1.2.11.jar:/home/shravan/mpj-v0_44/lib/wrapper.jar:/home/shravan:/home/shravan
+ DEBUG mpjdaemon  - arguments[0] = java
+ DEBUG mpjdaemon  - arguments[1] = -cp
+ DEBUG mpjdaemon  - arguments[2] = .:/home/shravan/mpj-v0_44/lib/loader1.jar:/home/shravan/mpj-v0_44/lib/mpj.jar:/home/shravan/mpj-v0_44/lib/log4j-1.2.11.jar:/home/shravan/mpj-v0_44/lib/wrapper.jar:/home/shravan:/home/shravan
+ DEBUG mpjdaemon  - arguments[3] = runtime.daemon.Wrapper
+ DEBUG mpjdaemon  - arguments[4] = #temp|line;#Number|of|Processes;1;#Protocol|Switch|Limit;131072;#Entry,|HOST_NAME/IP@READPORT@WRITEPORT@RANK@DEBUGPORT;10.7.9.235@0@0@0@0
+ DEBUG mpjdaemon  - arguments[5] = 1
+ DEBUG mpjdaemon  - arguments[6] = niodev
+ DEBUG mpjdaemon  - arguments[7] = VM1
+ DEBUG mpjdaemon  - arguments[8] = 40002
+ DEBUG mpjdaemon  - arguments[9] = 0
+ DEBUG mpjdaemon  - arguments[10] = HelloWorld
+ DEBUG mpjdaemon  - starting the process 
+ DEBUG mpjdaemon  - started the process 
+ DEBUG mpjdaemon  - outputting ...
+ DEBUG mpjdaemon  - Stopping the output
+ DEBUG mpjdaemon  - Job Finished
+ DEBUG mpjdaemon  - 
+
+ ** .. execution ends .. ** 
+
+
+ DEBUG mpjdaemon  - Accepting connection ..
+ DEBUG mpjdaemon  - Job Started
+ DEBUG mpjdaemon  - Ticket length 995
+ DEBUG mpjdaemon  - <MPJProcessInfo>
+    <TicketID>912cbf26-c328-4e03-8c64-c4b04ec7b24f</TicketID>
+    <ClassPath>/home/shravan/Desktop</ClassPath>
+    <MasterNode>CoderPC</MasterNode>
+    <MasterPort>40002</MasterPort>
+    <ProcessCount>1</ProcessCount>
+    <StartingRank>0</StartingRank>
+    <JvmArgs/>
+    <WorkingDirectory>/home/shravan/Desktop</WorkingDirectory>
+    <ZippedSource>false</ZippedSource>
+    <MainClass>HelloWorld</MainClass>
+    <DeviceName>niodev</DeviceName>
+    <ConfFileContents>#temp line;#Number of Processes;1;#Protocol Switch Limit;131072;#Entry, HOST_NAME/IP@READPORT@WRITEPORT@RANK@DEBUGPORT;127.0.1.1@0@0@0@0</ConfFileContents>
+    <AppArgs/>
+    <UserID>shravan</UserID>
+    <NetworkProcessCount>-1</NetworkProcessCount>
+    <TotalProcessCount>-1</TotalProcessCount>
+    <NetworkDevice>niodev</NetworkDevice>
+    <MPJ_HOME>/home/shravan/mpj-v0_44</MPJ_HOME>
+    <Debug>false</Debug>
+    <DebugPort>24500</DebugPort>
+    <Profiler>false</Profiler>
+</MPJProcessInfo>
+
+ DEBUG mpjdaemon  - configFilePath
+ DEBUG mpjdaemon  - Config file created :
+ DEBUG mpjdaemon  - modified: jArgs[0]=-cp
+ DEBUG mpjdaemon  - modified: jArgs[1]=.:/home/shravan/mpj-v0_44/lib/loader1.jar:/home/shravan/mpj-v0_44/lib/mpj.jar:/home/shravan/mpj-v0_44/lib/log4j-1.2.11.jar:/home/shravan/mpj-v0_44/lib/wrapper.jar:/home/shravan/Desktop:/home/shravan/Desktop
+ DEBUG mpjdaemon  - arguments[0] = java
+ DEBUG mpjdaemon  - arguments[1] = -cp
+ DEBUG mpjdaemon  - arguments[2] = .:/home/shravan/mpj-v0_44/lib/loader1.jar:/home/shravan/mpj-v0_44/lib/mpj.jar:/home/shravan/mpj-v0_44/lib/log4j-1.2.11.jar:/home/shravan/mpj-v0_44/lib/wrapper.jar:/home/shravan/Desktop:/home/shravan/Desktop
+ DEBUG mpjdaemon  - arguments[3] = runtime.daemon.Wrapper
+ DEBUG mpjdaemon  - arguments[4] = #temp|line;#Number|of|Processes;1;#Protocol|Switch|Limit;131072;#Entry,|HOST_NAME/IP@READPORT@WRITEPORT@RANK@DEBUGPORT;127.0.1.1@0@0@0@0
+ DEBUG mpjdaemon  - arguments[5] = 1
+ DEBUG mpjdaemon  - arguments[6] = niodev
+ DEBUG mpjdaemon  - arguments[7] = CoderPC
+ DEBUG mpjdaemon  - arguments[8] = 40002
+ DEBUG mpjdaemon  - arguments[9] = 0
+ DEBUG mpjdaemon  - arguments[10] = HelloWorld
+ DEBUG mpjdaemon  - starting the process 
+ DEBUG mpjdaemon  - started the process 
+ DEBUG mpjdaemon  - outputting ...
+ DEBUG mpjdaemon  - Stopping the output
+ DEBUG mpjdaemon  - Job Finished
+ DEBUG mpjdaemon  - 
+
+ ** .. execution ends .. ** 
+
+
+ DEBUG mpjdaemon  - Accepting connection ..
+ DEBUG mpjdaemon  - Job Started
+ DEBUG mpjdaemon  - Ticket length 1108
+ DEBUG mpjdaemon  - <MPJProcessInfo>
+    <TicketID>8293edb5-d69a-4ea3-84bb-8c91471fe0cf</TicketID>
+    <ClassPath>/home/shravan/Desktop</ClassPath>
+    <MasterNode>CoderPC</MasterNode>
+    <MasterPort>40002</MasterPort>
+    <ProcessCount>1</ProcessCount>
+    <StartingRank>0</StartingRank>
+    <JvmArgs/>
+    <WorkingDirectory>/home/shravan/Desktop</WorkingDirectory>
+    <ZippedSource>false</ZippedSource>
+    <MainClass>HelloWorld</MainClass>
+    <DeviceName>niodev</DeviceName>
+    <ConfFileContents>#temp line;#Number of Processes;1;#Protocol Switch Limit;131072;#Entry, HOST_NAME/IP@READPORT@WRITEPORT@RANK@DEBUGPORT;127.0.1.1@0@0@0@0</ConfFileContents>
+    <AppArgs>
+        <Argument>-</Argument>
+        <Argument>debug</Argument>
+        <Argument>100</Argument>
+    </AppArgs>
+    <UserID>shravan</UserID>
+    <NetworkProcessCount>-1</NetworkProcessCount>
+    <TotalProcessCount>-1</TotalProcessCount>
+    <NetworkDevice>niodev</NetworkDevice>
+    <MPJ_HOME>/home/shravan/mpj-v0_44</MPJ_HOME>
+    <Debug>false</Debug>
+    <DebugPort>24500</DebugPort>
+    <Profiler>false</Profiler>
+</MPJProcessInfo>
+
+ DEBUG mpjdaemon  - configFilePath
+ DEBUG mpjdaemon  - Config file created :
+ DEBUG mpjdaemon  - modified: jArgs[0]=-cp
+ DEBUG mpjdaemon  - modified: jArgs[1]=.:/home/shravan/mpj-v0_44/lib/loader1.jar:/home/shravan/mpj-v0_44/lib/mpj.jar:/home/shravan/mpj-v0_44/lib/log4j-1.2.11.jar:/home/shravan/mpj-v0_44/lib/wrapper.jar:/home/shravan/Desktop:/home/shravan/Desktop
+ DEBUG mpjdaemon  - arguments[0] = java
+ DEBUG mpjdaemon  - arguments[1] = -cp
+ DEBUG mpjdaemon  - arguments[2] = .:/home/shravan/mpj-v0_44/lib/loader1.jar:/home/shravan/mpj-v0_44/lib/mpj.jar:/home/shravan/mpj-v0_44/lib/log4j-1.2.11.jar:/home/shravan/mpj-v0_44/lib/wrapper.jar:/home/shravan/Desktop:/home/shravan/Desktop
+ DEBUG mpjdaemon  - arguments[3] = runtime.daemon.Wrapper
+ DEBUG mpjdaemon  - arguments[4] = #temp|line;#Number|of|Processes;1;#Protocol|Switch|Limit;131072;#Entry,|HOST_NAME/IP@READPORT@WRITEPORT@RANK@DEBUGPORT;127.0.1.1@0@0@0@0
+ DEBUG mpjdaemon  - arguments[5] = 1
+ DEBUG mpjdaemon  - arguments[6] = niodev
+ DEBUG mpjdaemon  - arguments[7] = CoderPC
+ DEBUG mpjdaemon  - arguments[8] = 40002
+ DEBUG mpjdaemon  - arguments[9] = 0
+ DEBUG mpjdaemon  - arguments[10] = HelloWorld
+ DEBUG mpjdaemon  - arguments[11] = -
+ DEBUG mpjdaemon  - arguments[12] = debug
+ DEBUG mpjdaemon  - arguments[13] = 100
+ DEBUG mpjdaemon  - starting the process 
+ DEBUG mpjdaemon  - started the process 
+ DEBUG mpjdaemon  - outputting ...
+ DEBUG mpjdaemon  - Stopping the output
+ DEBUG mpjdaemon  - Job Finished
+ DEBUG mpjdaemon  - 
+
+ ** .. execution ends .. ** 
+
+
+ DEBUG mpjdaemon  - Accepting connection ..
+ DEBUG mpjdaemon  - Job Started
+ DEBUG mpjdaemon  - Ticket length 0
+ DEBUG mpjdaemon  - Accepting connection ..
+ DEBUG mpjdaemon  - Job Started
+ DEBUG mpjdaemon  - Ticket length 0
+ DEBUG mpjdaemon  - Accepting connection ..
+ DEBUG mpjdaemon  - Job Started
+ DEBUG mpjdaemon  - Ticket length 995
+ DEBUG mpjdaemon  - <MPJProcessInfo>
+    <TicketID>5da9c682-d9a7-462b-8d9b-bb176f82e1ae</TicketID>
+    <ClassPath>/home/shravan/Desktop</ClassPath>
+    <MasterNode>CoderPC</MasterNode>
+    <MasterPort>40002</MasterPort>
+    <ProcessCount>1</ProcessCount>
+    <StartingRank>0</StartingRank>
+    <JvmArgs/>
+    <WorkingDirectory>/home/shravan/Desktop</WorkingDirectory>
+    <ZippedSource>false</ZippedSource>
+    <MainClass>HelloWorld</MainClass>
+    <DeviceName>niodev</DeviceName>
+    <ConfFileContents>#temp line;#Number of Processes;1;#Protocol Switch Limit;131072;#Entry, HOST_NAME/IP@READPORT@WRITEPORT@RANK@DEBUGPORT;127.0.1.1@0@0@0@0</ConfFileContents>
+    <AppArgs/>
+    <UserID>shravan</UserID>
+    <NetworkProcessCount>-1</NetworkProcessCount>
+    <TotalProcessCount>-1</TotalProcessCount>
+    <NetworkDevice>niodev</NetworkDevice>
+    <MPJ_HOME>/home/shravan/mpj-v0_44</MPJ_HOME>
+    <Debug>false</Debug>
+    <DebugPort>24500</DebugPort>
+    <Profiler>false</Profiler>
+</MPJProcessInfo>
+
+ DEBUG mpjdaemon  - configFilePath
+ DEBUG mpjdaemon  - Config file created :
+ DEBUG mpjdaemon  - modified: jArgs[0]=-cp
+ DEBUG mpjdaemon  - modified: jArgs[1]=.:/home/shravan/mpj-v0_44/lib/loader1.jar:/home/shravan/mpj-v0_44/lib/mpj.jar:/home/shravan/mpj-v0_44/lib/log4j-1.2.11.jar:/home/shravan/mpj-v0_44/lib/wrapper.jar:/home/shravan/Desktop:/home/shravan/Desktop
+ DEBUG mpjdaemon  - arguments[0] = java
+ DEBUG mpjdaemon  - arguments[1] = -cp
+ DEBUG mpjdaemon  - arguments[2] = .:/home/shravan/mpj-v0_44/lib/loader1.jar:/home/shravan/mpj-v0_44/lib/mpj.jar:/home/shravan/mpj-v0_44/lib/log4j-1.2.11.jar:/home/shravan/mpj-v0_44/lib/wrapper.jar:/home/shravan/Desktop:/home/shravan/Desktop
+ DEBUG mpjdaemon  - arguments[3] = runtime.daemon.Wrapper
+ DEBUG mpjdaemon  - arguments[4] = #temp|line;#Number|of|Processes;1;#Protocol|Switch|Limit;131072;#Entry,|HOST_NAME/IP@READPORT@WRITEPORT@RANK@DEBUGPORT;127.0.1.1@0@0@0@0
+ DEBUG mpjdaemon  - arguments[5] = 1
+ DEBUG mpjdaemon  - arguments[6] = niodev
+ DEBUG mpjdaemon  - arguments[7] = CoderPC
+ DEBUG mpjdaemon  - arguments[8] = 40002
+ DEBUG mpjdaemon  - arguments[9] = 0
+ DEBUG mpjdaemon  - arguments[10] = HelloWorld
+ DEBUG mpjdaemon  - starting the process 
+ DEBUG mpjdaemon  - started the process 
+ DEBUG mpjdaemon  - outputting ...
+ DEBUG mpjdaemon  - Stopping the output
+ DEBUG mpjdaemon  - Job Finished
+ DEBUG mpjdaemon  - 
+
+ ** .. execution ends .. ** 
+
+
+ DEBUG mpjdaemon  - Accepting connection ..
+ DEBUG mpjdaemon  - Job Started
+ DEBUG mpjdaemon  - Ticket length 0
+ DEBUG mpjdaemon  - Accepting connection ..
+ DEBUG mpjdaemon  - Job Started
+ DEBUG mpjdaemon  - Ticket length 0
+ DEBUG mpjdaemon  - Accepting connection ..
+ DEBUG mpjdaemon  - Job Started
+ DEBUG mpjdaemon  - Ticket length 0
+ DEBUG mpjdaemon  - mpjHomeDir /home/shravan/mpj-v0_44
+ DEBUG mpjdaemon  -  args[0] 40055
+ DEBUG mpjdaemon  - setting daemon port to40055
+ DEBUG mpjdaemon  - Starting PortManager thread .. 
+ DEBUG mpjdaemon  - Starting ConnectionManager thread .. 
+ DEBUG mpjdaemon  - serverSocketInit .. 
+ DEBUG mpjdaemon  - serverSocketInit called .. 
+ DEBUG mpjdaemon  - Accepting connection ..
+ DEBUG mpjdaemon  - Accepting connection ..
+ DEBUG mpjdaemon  - Job Started
+ DEBUG mpjdaemon  - Ticket length 0
+ DEBUG mpjdaemon  - Error 0.. 
+ DEBUG mpjdaemon  - Accepting connection ..
+ DEBUG mpjdaemon  - Job Started
+ DEBUG mpjdaemon  - Ticket length 0
+ DEBUG mpjdaemon  - mpjHomeDir /home/shravan/mpj-v0_44
+ DEBUG mpjdaemon  -  args[0] 40055
+ DEBUG mpjdaemon  - setting daemon port to40055
+ DEBUG mpjdaemon  - Starting PortManager thread .. 
+ DEBUG mpjdaemon  - Starting ConnectionManager thread .. 
+ DEBUG mpjdaemon  - serverSocketInit .. 
+ DEBUG mpjdaemon  - serverSocketInit called .. 
+ DEBUG mpjdaemon  - Accepting connection ..
+ DEBUG mpjdaemon  - Accepting connection ..
+ DEBUG mpjdaemon  - Job Started
+ DEBUG mpjdaemon  - Ticket length 1022
+ DEBUG mpjdaemon  - <MPJProcessInfo>
+    <TicketID>18c5f01a-bb7c-4fed-ba9c-2a75fdcddddf</TicketID>
+    <ClassPath>/home/shravan/Desktop/MPJ</ClassPath>
+    <MasterNode>CoderPC</MasterNode>
+    <MasterPort>40002</MasterPort>
+    <ProcessCount>2</ProcessCount>
+    <StartingRank>0</StartingRank>
+    <JvmArgs/>
+    <WorkingDirectory>/home/shravan/Desktop/MPJ</WorkingDirectory>
+    <ZippedSource>false</ZippedSource>
+    <MainClass>HelloWorld.</MainClass>
+    <DeviceName>niodev</DeviceName>
+    <ConfFileContents>#temp line;#Number of Processes;2;#Protocol Switch Limit;131072;#Entry, HOST_NAME/IP@READPORT@WRITEPORT@RANK@DEBUGPORT;127.0.1.1@0@0@0@0;127.0.1.1@0@0@1@2</ConfFileContents>
+    <AppArgs/>
+    <UserID>shravan</UserID>
+    <NetworkProcessCount>-1</NetworkProcessCount>
+    <TotalProcessCount>-1</TotalProcessCount>
+    <NetworkDevice>niodev</NetworkDevice>
+    <MPJ_HOME>/home/shravan/mpj-v0_44</MPJ_HOME>
+    <Debug>false</Debug>
+    <DebugPort>24500</DebugPort>
+    <Profiler>false</Profiler>
+</MPJProcessInfo>
+
+ DEBUG mpjdaemon  - configFilePath
+ DEBUG mpjdaemon  - Config file created :
+ DEBUG mpjdaemon  - modified: jArgs[0]=-cp
+ DEBUG mpjdaemon  - modified: jArgs[1]=.:/home/shravan/mpj-v0_44/lib/loader1.jar:/home/shravan/mpj-v0_44/lib/mpj.jar:/home/shravan/mpj-v0_44/lib/log4j-1.2.11.jar:/home/shravan/mpj-v0_44/lib/wrapper.jar:/home/shravan/Desktop/MPJ:/home/shravan/Desktop/MPJ
+ DEBUG mpjdaemon  - arguments[0] = java
+ DEBUG mpjdaemon  - arguments[1] = -cp
+ DEBUG mpjdaemon  - arguments[2] = .:/home/shravan/mpj-v0_44/lib/loader1.jar:/home/shravan/mpj-v0_44/lib/mpj.jar:/home/shravan/mpj-v0_44/lib/log4j-1.2.11.jar:/home/shravan/mpj-v0_44/lib/wrapper.jar:/home/shravan/Desktop/MPJ:/home/shravan/Desktop/MPJ
+ DEBUG mpjdaemon  - arguments[3] = runtime.daemon.Wrapper
+ DEBUG mpjdaemon  - arguments[4] = #temp|line;#Number|of|Processes;2;#Protocol|Switch|Limit;131072;#Entry,|HOST_NAME/IP@READPORT@WRITEPORT@RANK@DEBUGPORT;127.0.1.1@0@0@0@0;127.0.1.1@0@0@1@2
+ DEBUG mpjdaemon  - arguments[5] = 2
+ DEBUG mpjdaemon  - arguments[6] = niodev
+ DEBUG mpjdaemon  - arguments[7] = CoderPC
+ DEBUG mpjdaemon  - arguments[8] = 40002
+ DEBUG mpjdaemon  - arguments[9] = 0
+ DEBUG mpjdaemon  - arguments[10] = HelloWorld.
+ DEBUG mpjdaemon  - starting the process 
+ DEBUG mpjdaemon  - started the process 
+ DEBUG mpjdaemon  - arguments[0] = java
+ DEBUG mpjdaemon  - arguments[1] = -cp
+ DEBUG mpjdaemon  - arguments[2] = .:/home/shravan/mpj-v0_44/lib/loader1.jar:/home/shravan/mpj-v0_44/lib/mpj.jar:/home/shravan/mpj-v0_44/lib/log4j-1.2.11.jar:/home/shravan/mpj-v0_44/lib/wrapper.jar:/home/shravan/Desktop/MPJ:/home/shravan/Desktop/MPJ
+ DEBUG mpjdaemon  - arguments[3] = runtime.daemon.Wrapper
+ DEBUG mpjdaemon  - arguments[4] = #temp|line;#Number|of|Processes;2;#Protocol|Switch|Limit;131072;#Entry,|HOST_NAME/IP@READPORT@WRITEPORT@RANK@DEBUGPORT;127.0.1.1@0@0@0@0;127.0.1.1@0@0@1@2
+ DEBUG mpjdaemon  - arguments[5] = 2
+ DEBUG mpjdaemon  - arguments[6] = niodev
+ DEBUG mpjdaemon  - arguments[7] = CoderPC
+ DEBUG mpjdaemon  - arguments[8] = 40002
+ DEBUG mpjdaemon  - arguments[9] = 1
+ DEBUG mpjdaemon  - arguments[10] = HelloWorld.
+ DEBUG mpjdaemon  - starting the process 
+ DEBUG mpjdaemon  - outputting ...
+ DEBUG mpjdaemon  - started the process 
+ DEBUG mpjdaemon  - outputting ...
+ DEBUG mpjdaemon  - Stopping the output
+ DEBUG mpjdaemon  - Job Finished
+ DEBUG mpjdaemon  - 
+
+ ** .. execution ends .. ** 
+
+
+ DEBUG mpjdaemon  - Accepting connection ..
+ DEBUG mpjdaemon  - Job Started
+ DEBUG mpjdaemon  - Ticket length 1021
+ DEBUG mpjdaemon  - <MPJProcessInfo>
+    <TicketID>a1d58795-1994-4582-89b5-a63ea62e2526</TicketID>
+    <ClassPath>/home/shravan/Desktop/MPJ</ClassPath>
+    <MasterNode>CoderPC</MasterNode>
+    <MasterPort>40002</MasterPort>
+    <ProcessCount>2</ProcessCount>
+    <StartingRank>0</StartingRank>
+    <JvmArgs/>
+    <WorkingDirectory>/home/shravan/Desktop/MPJ</WorkingDirectory>
+    <ZippedSource>false</ZippedSource>
+    <MainClass>HelloWorld</MainClass>
+    <DeviceName>niodev</DeviceName>
+    <ConfFileContents>#temp line;#Number of Processes;2;#Protocol Switch Limit;131072;#Entry, HOST_NAME/IP@READPORT@WRITEPORT@RANK@DEBUGPORT;127.0.1.1@0@0@0@0;127.0.1.1@0@0@1@2</ConfFileContents>
+    <AppArgs/>
+    <UserID>shravan</UserID>
+    <NetworkProcessCount>-1</NetworkProcessCount>
+    <TotalProcessCount>-1</TotalProcessCount>
+    <NetworkDevice>niodev</NetworkDevice>
+    <MPJ_HOME>/home/shravan/mpj-v0_44</MPJ_HOME>
+    <Debug>false</Debug>
+    <DebugPort>24500</DebugPort>
+    <Profiler>false</Profiler>
+</MPJProcessInfo>
+
+ DEBUG mpjdaemon  - configFilePath
+ DEBUG mpjdaemon  - Config file created :
+ DEBUG mpjdaemon  - modified: jArgs[0]=-cp
+ DEBUG mpjdaemon  - modified: jArgs[1]=.:/home/shravan/mpj-v0_44/lib/loader1.jar:/home/shravan/mpj-v0_44/lib/mpj.jar:/home/shravan/mpj-v0_44/lib/log4j-1.2.11.jar:/home/shravan/mpj-v0_44/lib/wrapper.jar:/home/shravan/Desktop/MPJ:/home/shravan/Desktop/MPJ
+ DEBUG mpjdaemon  - arguments[0] = java
+ DEBUG mpjdaemon  - arguments[1] = -cp
+ DEBUG mpjdaemon  - arguments[2] = .:/home/shravan/mpj-v0_44/lib/loader1.jar:/home/shravan/mpj-v0_44/lib/mpj.jar:/home/shravan/mpj-v0_44/lib/log4j-1.2.11.jar:/home/shravan/mpj-v0_44/lib/wrapper.jar:/home/shravan/Desktop/MPJ:/home/shravan/Desktop/MPJ
+ DEBUG mpjdaemon  - arguments[3] = runtime.daemon.Wrapper
+ DEBUG mpjdaemon  - arguments[4] = #temp|line;#Number|of|Processes;2;#Protocol|Switch|Limit;131072;#Entry,|HOST_NAME/IP@READPORT@WRITEPORT@RANK@DEBUGPORT;127.0.1.1@0@0@0@0;127.0.1.1@0@0@1@2
+ DEBUG mpjdaemon  - arguments[5] = 2
+ DEBUG mpjdaemon  - arguments[6] = niodev
+ DEBUG mpjdaemon  - arguments[7] = CoderPC
+ DEBUG mpjdaemon  - arguments[8] = 40002
+ DEBUG mpjdaemon  - arguments[9] = 0
+ DEBUG mpjdaemon  - arguments[10] = HelloWorld
+ DEBUG mpjdaemon  - starting the process 
+ DEBUG mpjdaemon  - started the process 
+ DEBUG mpjdaemon  - arguments[0] = java
+ DEBUG mpjdaemon  - arguments[1] = -cp
+ DEBUG mpjdaemon  - arguments[2] = .:/home/shravan/mpj-v0_44/lib/loader1.jar:/home/shravan/mpj-v0_44/lib/mpj.jar:/home/shravan/mpj-v0_44/lib/log4j-1.2.11.jar:/home/shravan/mpj-v0_44/lib/wrapper.jar:/home/shravan/Desktop/MPJ:/home/shravan/Desktop/MPJ
+ DEBUG mpjdaemon  - arguments[3] = runtime.daemon.Wrapper
+ DEBUG mpjdaemon  - arguments[4] = #temp|line;#Number|of|Processes;2;#Protocol|Switch|Limit;131072;#Entry,|HOST_NAME/IP@READPORT@WRITEPORT@RANK@DEBUGPORT;127.0.1.1@0@0@0@0;127.0.1.1@0@0@1@2
+ DEBUG mpjdaemon  - arguments[5] = 2
+ DEBUG mpjdaemon  - arguments[6] = niodev
+ DEBUG mpjdaemon  - arguments[7] = CoderPC
+ DEBUG mpjdaemon  - arguments[8] = 40002
+ DEBUG mpjdaemon  - arguments[9] = 1
+ DEBUG mpjdaemon  - arguments[10] = HelloWorld
+ DEBUG mpjdaemon  - starting the process 
+ DEBUG mpjdaemon  - outputting ...
+ DEBUG mpjdaemon  - started the process 
+ DEBUG mpjdaemon  - outputting ...
+ DEBUG mpjdaemon  - Stopping the output
+ DEBUG mpjdaemon  - Job Finished
+ DEBUG mpjdaemon  - 
+
+ ** .. execution ends .. ** 
+
+
+ DEBUG mpjdaemon  - Accepting connection ..
+ DEBUG mpjdaemon  - Job Started
+ DEBUG mpjdaemon  - Ticket length 4260
+ DEBUG mpjdaemon  - <MPJProcessInfo>
+    <TicketID>63da5280-1cf1-4304-9001-e7f8f7d3d808</TicketID>
+    <ClassPath>/home/shravan/Desktop/MPJ</ClassPath>
+    <MasterNode>CoderPC</MasterNode>
+    <MasterPort>40002</MasterPort>
+    <ProcessCount>2</ProcessCount>
+    <StartingRank>0</StartingRank>
+    <JvmArgs/>
+    <WorkingDirectory>/home/shravan/Desktop/MPJ</WorkingDirectory>
+    <ZippedSource>true</ZippedSource>
+    <MainClass>HelloWorld</MainClass>
+    <DeviceName>niodev</DeviceName>
+    <ConfFileContents>#temp line;#Number of Processes;2;#Protocol Switch Limit;131072;#Entry, HOST_NAME/IP@READPORT@WRITEPORT@RANK@DEBUGPORT;127.0.1.1@0@0@0@0;127.0.1.1@0@0@1@2</ConfFileContents>
+    <AppArgs/>
+    <UserID>shravan</UserID>
+    <NetworkProcessCount>-1</NetworkProcessCount>
+    <TotalProcessCount>-1</TotalProcessCount>
+    <NetworkDevice>niodev</NetworkDevice>
+    <MPJ_HOME>/home/shravan/mpj-v0_44</MPJ_HOME>
+    <Debug>false</Debug>
+    <DebugPort>24500</DebugPort>
+    <Profiler>false</Profiler>
+</MPJProcessInfo>
+
+ DEBUG mpjdaemon  - configFilePath
+ DEBUG mpjdaemon  - Config file created :
+ DEBUG mpjdaemon  - modified: jArgs[0]=-cp
+ DEBUG mpjdaemon  - modified: jArgs[1]=.:/home/shravan/mpj-v0_44/lib/loader1.jar:/home/shravan/mpj-v0_44/lib/mpj.jar:/home/shravan/mpj-v0_44/lib/log4j-1.2.11.jar:/home/shravan/mpj-v0_44/lib/wrapper.jar:/home/shravan/.mpj_users/shravan/63da5280-1cf1-4304-9001-e7f8f7d3d808/src/MPJ:/home/shravan/.mpj_users/shravan/63da5280-1cf1-4304-9001-e7f8f7d3d808/src/MPJ
+ DEBUG mpjdaemon  - arguments[0] = java
+ DEBUG mpjdaemon  - arguments[1] = -cp
+ DEBUG mpjdaemon  - arguments[2] = .:/home/shravan/mpj-v0_44/lib/loader1.jar:/home/shravan/mpj-v0_44/lib/mpj.jar:/home/shravan/mpj-v0_44/lib/log4j-1.2.11.jar:/home/shravan/mpj-v0_44/lib/wrapper.jar:/home/shravan/.mpj_users/shravan/63da5280-1cf1-4304-9001-e7f8f7d3d808/src/MPJ:/home/shravan/.mpj_users/shravan/63da5280-1cf1-4304-9001-e7f8f7d3d808/src/MPJ
+ DEBUG mpjdaemon  - arguments[3] = runtime.daemon.Wrapper
+ DEBUG mpjdaemon  - arguments[4] = #temp|line;#Number|of|Processes;2;#Protocol|Switch|Limit;131072;#Entry,|HOST_NAME/IP@READPORT@WRITEPORT@RANK@DEBUGPORT;127.0.1.1@0@0@0@0;127.0.1.1@0@0@1@2
+ DEBUG mpjdaemon  - arguments[5] = 2
+ DEBUG mpjdaemon  - arguments[6] = niodev
+ DEBUG mpjdaemon  - arguments[7] = CoderPC
+ DEBUG mpjdaemon  - arguments[8] = 40002
+ DEBUG mpjdaemon  - arguments[9] = 0
+ DEBUG mpjdaemon  - arguments[10] = HelloWorld
+ DEBUG mpjdaemon  - starting the process 
+ DEBUG mpjdaemon  - started the process 
+ DEBUG mpjdaemon  - arguments[0] = java
+ DEBUG mpjdaemon  - arguments[1] = -cp
+ DEBUG mpjdaemon  - arguments[2] = .:/home/shravan/mpj-v0_44/lib/loader1.jar:/home/shravan/mpj-v0_44/lib/mpj.jar:/home/shravan/mpj-v0_44/lib/log4j-1.2.11.jar:/home/shravan/mpj-v0_44/lib/wrapper.jar:/home/shravan/.mpj_users/shravan/63da5280-1cf1-4304-9001-e7f8f7d3d808/src/MPJ:/home/shravan/.mpj_users/shravan/63da5280-1cf1-4304-9001-e7f8f7d3d808/src/MPJ
+ DEBUG mpjdaemon  - arguments[3] = runtime.daemon.Wrapper
+ DEBUG mpjdaemon  - arguments[4] = #temp|line;#Number|of|Processes;2;#Protocol|Switch|Limit;131072;#Entry,|HOST_NAME/IP@READPORT@WRITEPORT@RANK@DEBUGPORT;127.0.1.1@0@0@0@0;127.0.1.1@0@0@1@2
+ DEBUG mpjdaemon  - arguments[5] = 2
+ DEBUG mpjdaemon  - arguments[6] = niodev
+ DEBUG mpjdaemon  - arguments[7] = CoderPC
+ DEBUG mpjdaemon  - arguments[8] = 40002
+ DEBUG mpjdaemon  - arguments[9] = 1
+ DEBUG mpjdaemon  - arguments[10] = HelloWorld
+ DEBUG mpjdaemon  - starting the process 
+ DEBUG mpjdaemon  - outputting ...
+ DEBUG mpjdaemon  - started the process 
+ DEBUG mpjdaemon  - outputting ...
+ DEBUG mpjdaemon  - Stopping the output
+ DEBUG mpjdaemon  - Job Finished
+ DEBUG mpjdaemon  - 
+
+ ** .. execution ends .. ** 
+
+
+ DEBUG mpjdaemon  - Accepting connection ..
+ DEBUG mpjdaemon  - Job Started
+ DEBUG mpjdaemon  - Ticket length 1022
+ DEBUG mpjdaemon  - <MPJProcessInfo>
+    <TicketID>8e4f4360-f443-4409-86e5-38f79adcc2c3</TicketID>
+    <ClassPath>/home/shravan/Desktop/MPJ</ClassPath>
+    <MasterNode>CoderPC</MasterNode>
+    <MasterPort>40002</MasterPort>
+    <ProcessCount>2</ProcessCount>
+    <StartingRank>0</StartingRank>
+    <JvmArgs/>
+    <WorkingDirectory>/home/shravan/Desktop/MPJ</WorkingDirectory>
+    <ZippedSource>false</ZippedSource>
+    <MainClass>HelloWorld.</MainClass>
+    <DeviceName>niodev</DeviceName>
+    <ConfFileContents>#temp line;#Number of Processes;2;#Protocol Switch Limit;131072;#Entry, HOST_NAME/IP@READPORT@WRITEPORT@RANK@DEBUGPORT;127.0.1.1@0@0@0@0;127.0.1.1@0@0@1@2</ConfFileContents>
+    <AppArgs/>
+    <UserID>shravan</UserID>
+    <NetworkProcessCount>-1</NetworkProcessCount>
+    <TotalProcessCount>-1</TotalProcessCount>
+    <NetworkDevice>niodev</NetworkDevice>
+    <MPJ_HOME>/home/shravan/mpj-v0_44</MPJ_HOME>
+    <Debug>false</Debug>
+    <DebugPort>24500</DebugPort>
+    <Profiler>false</Profiler>
+</MPJProcessInfo>
+
+ DEBUG mpjdaemon  - configFilePath
+ DEBUG mpjdaemon  - Config file created :
+ DEBUG mpjdaemon  - modified: jArgs[0]=-cp
+ DEBUG mpjdaemon  - modified: jArgs[1]=.:/home/shravan/mpj-v0_44/lib/loader1.jar:/home/shravan/mpj-v0_44/lib/mpj.jar:/home/shravan/mpj-v0_44/lib/log4j-1.2.11.jar:/home/shravan/mpj-v0_44/lib/wrapper.jar:/home/shravan/Desktop/MPJ:/home/shravan/Desktop/MPJ
+ DEBUG mpjdaemon  - arguments[0] = java
+ DEBUG mpjdaemon  - arguments[1] = -cp
+ DEBUG mpjdaemon  - arguments[2] = .:/home/shravan/mpj-v0_44/lib/loader1.jar:/home/shravan/mpj-v0_44/lib/mpj.jar:/home/shravan/mpj-v0_44/lib/log4j-1.2.11.jar:/home/shravan/mpj-v0_44/lib/wrapper.jar:/home/shravan/Desktop/MPJ:/home/shravan/Desktop/MPJ
+ DEBUG mpjdaemon  - arguments[3] = runtime.daemon.Wrapper
+ DEBUG mpjdaemon  - arguments[4] = #temp|line;#Number|of|Processes;2;#Protocol|Switch|Limit;131072;#Entry,|HOST_NAME/IP@READPORT@WRITEPORT@RANK@DEBUGPORT;127.0.1.1@0@0@0@0;127.0.1.1@0@0@1@2
+ DEBUG mpjdaemon  - arguments[5] = 2
+ DEBUG mpjdaemon  - arguments[6] = niodev
+ DEBUG mpjdaemon  - arguments[7] = CoderPC
+ DEBUG mpjdaemon  - arguments[8] = 40002
+ DEBUG mpjdaemon  - arguments[9] = 0
+ DEBUG mpjdaemon  - arguments[10] = HelloWorld.
+ DEBUG mpjdaemon  - starting the process 
+ DEBUG mpjdaemon  - started the process 
+ DEBUG mpjdaemon  - outputting ...
+ DEBUG mpjdaemon  - arguments[0] = java
+ DEBUG mpjdaemon  - arguments[1] = -cp
+ DEBUG mpjdaemon  - arguments[2] = .:/home/shravan/mpj-v0_44/lib/loader1.jar:/home/shravan/mpj-v0_44/lib/mpj.jar:/home/shravan/mpj-v0_44/lib/log4j-1.2.11.jar:/home/shravan/mpj-v0_44/lib/wrapper.jar:/home/shravan/Desktop/MPJ:/home/shravan/Desktop/MPJ
+ DEBUG mpjdaemon  - arguments[3] = runtime.daemon.Wrapper
+ DEBUG mpjdaemon  - arguments[4] = #temp|line;#Number|of|Processes;2;#Protocol|Switch|Limit;131072;#Entry,|HOST_NAME/IP@READPORT@WRITEPORT@RANK@DEBUGPORT;127.0.1.1@0@0@0@0;127.0.1.1@0@0@1@2
+ DEBUG mpjdaemon  - arguments[5] = 2
+ DEBUG mpjdaemon  - arguments[6] = niodev
+ DEBUG mpjdaemon  - arguments[7] = CoderPC
+ DEBUG mpjdaemon  - arguments[8] = 40002
+ DEBUG mpjdaemon  - arguments[9] = 1
+ DEBUG mpjdaemon  - arguments[10] = HelloWorld.
+ DEBUG mpjdaemon  - starting the process 
+ DEBUG mpjdaemon  - started the process 
+ DEBUG mpjdaemon  - outputting ...
+ DEBUG mpjdaemon  - Stopping the output
+ DEBUG mpjdaemon  - Job Finished
+ DEBUG mpjdaemon  - 
+
+ ** .. execution ends .. ** 
+
+
+ DEBUG mpjdaemon  - Accepting connection ..
+ DEBUG mpjdaemon  - Job Started
+ DEBUG mpjdaemon  - Ticket length 1021
+ DEBUG mpjdaemon  - <MPJProcessInfo>
+    <TicketID>1f135559-4781-4409-9274-02073621ac20</TicketID>
+    <ClassPath>/home/shravan/Desktop/MPJ</ClassPath>
+    <MasterNode>CoderPC</MasterNode>
+    <MasterPort>40002</MasterPort>
+    <ProcessCount>2</ProcessCount>
+    <StartingRank>0</StartingRank>
+    <JvmArgs/>
+    <WorkingDirectory>/home/shravan/Desktop/MPJ</WorkingDirectory>
+    <ZippedSource>false</ZippedSource>
+    <MainClass>HelloWorld</MainClass>
+    <DeviceName>niodev</DeviceName>
+    <ConfFileContents>#temp line;#Number of Processes;2;#Protocol Switch Limit;131072;#Entry, HOST_NAME/IP@READPORT@WRITEPORT@RANK@DEBUGPORT;127.0.1.1@0@0@0@0;127.0.1.1@0@0@1@2</ConfFileContents>
+    <AppArgs/>
+    <UserID>shravan</UserID>
+    <NetworkProcessCount>-1</NetworkProcessCount>
+    <TotalProcessCount>-1</TotalProcessCount>
+    <NetworkDevice>niodev</NetworkDevice>
+    <MPJ_HOME>/home/shravan/mpj-v0_44</MPJ_HOME>
+    <Debug>false</Debug>
+    <DebugPort>24500</DebugPort>
+    <Profiler>false</Profiler>
+</MPJProcessInfo>
+
+ DEBUG mpjdaemon  - configFilePath
+ DEBUG mpjdaemon  - Config file created :
+ DEBUG mpjdaemon  - modified: jArgs[0]=-cp
+ DEBUG mpjdaemon  - modified: jArgs[1]=.:/home/shravan/mpj-v0_44/lib/loader1.jar:/home/shravan/mpj-v0_44/lib/mpj.jar:/home/shravan/mpj-v0_44/lib/log4j-1.2.11.jar:/home/shravan/mpj-v0_44/lib/wrapper.jar:/home/shravan/Desktop/MPJ:/home/shravan/Desktop/MPJ
+ DEBUG mpjdaemon  - arguments[0] = java
+ DEBUG mpjdaemon  - arguments[1] = -cp
+ DEBUG mpjdaemon  - arguments[2] = .:/home/shravan/mpj-v0_44/lib/loader1.jar:/home/shravan/mpj-v0_44/lib/mpj.jar:/home/shravan/mpj-v0_44/lib/log4j-1.2.11.jar:/home/shravan/mpj-v0_44/lib/wrapper.jar:/home/shravan/Desktop/MPJ:/home/shravan/Desktop/MPJ
+ DEBUG mpjdaemon  - arguments[3] = runtime.daemon.Wrapper
+ DEBUG mpjdaemon  - arguments[4] = #temp|line;#Number|of|Processes;2;#Protocol|Switch|Limit;131072;#Entry,|HOST_NAME/IP@READPORT@WRITEPORT@RANK@DEBUGPORT;127.0.1.1@0@0@0@0;127.0.1.1@0@0@1@2
+ DEBUG mpjdaemon  - arguments[5] = 2
+ DEBUG mpjdaemon  - arguments[6] = niodev
+ DEBUG mpjdaemon  - arguments[7] = CoderPC
+ DEBUG mpjdaemon  - arguments[8] = 40002
+ DEBUG mpjdaemon  - arguments[9] = 0
+ DEBUG mpjdaemon  - arguments[10] = HelloWorld
+ DEBUG mpjdaemon  - starting the process 
+ DEBUG mpjdaemon  - started the process 
+ DEBUG mpjdaemon  - arguments[0] = java
+ DEBUG mpjdaemon  - arguments[1] = -cp
+ DEBUG mpjdaemon  - arguments[2] = .:/home/shravan/mpj-v0_44/lib/loader1.jar:/home/shravan/mpj-v0_44/lib/mpj.jar:/home/shravan/mpj-v0_44/lib/log4j-1.2.11.jar:/home/shravan/mpj-v0_44/lib/wrapper.jar:/home/shravan/Desktop/MPJ:/home/shravan/Desktop/MPJ
+ DEBUG mpjdaemon  - arguments[3] = runtime.daemon.Wrapper
+ DEBUG mpjdaemon  - arguments[4] = #temp|line;#Number|of|Processes;2;#Protocol|Switch|Limit;131072;#Entry,|HOST_NAME/IP@READPORT@WRITEPORT@RANK@DEBUGPORT;127.0.1.1@0@0@0@0;127.0.1.1@0@0@1@2
+ DEBUG mpjdaemon  - arguments[5] = 2
+ DEBUG mpjdaemon  - arguments[6] = niodev
+ DEBUG mpjdaemon  - arguments[7] = CoderPC
+ DEBUG mpjdaemon  - arguments[8] = 40002
+ DEBUG mpjdaemon  - arguments[9] = 1
+ DEBUG mpjdaemon  - arguments[10] = HelloWorld
+ DEBUG mpjdaemon  - starting the process 
+ DEBUG mpjdaemon  - outputting ...
+ DEBUG mpjdaemon  - started the process 
+ DEBUG mpjdaemon  - outputting ...
+ DEBUG mpjdaemon  - Stopping the output
+ DEBUG mpjdaemon  - Job Finished
+ DEBUG mpjdaemon  - 
+
+ ** .. execution ends .. ** 
+
+
+ DEBUG mpjdaemon  - Accepting connection ..
+ DEBUG mpjdaemon  - Job Started
+ DEBUG mpjdaemon  - Ticket length 4260
+ DEBUG mpjdaemon  - <MPJProcessInfo>
+    <TicketID>c71429af-9c5f-42a9-8cbc-6f2590d576a1</TicketID>
+    <ClassPath>/home/shravan/Desktop/MPJ</ClassPath>
+    <MasterNode>CoderPC</MasterNode>
+    <MasterPort>40002</MasterPort>
+    <ProcessCount>2</ProcessCount>
+    <StartingRank>0</StartingRank>
+    <JvmArgs/>
+    <WorkingDirectory>/home/shravan/Desktop/MPJ</WorkingDirectory>
+    <ZippedSource>true</ZippedSource>
+    <MainClass>HelloWorld</MainClass>
+    <DeviceName>niodev</DeviceName>
+    <ConfFileContents>#temp line;#Number of Processes;2;#Protocol Switch Limit;131072;#Entry, HOST_NAME/IP@READPORT@WRITEPORT@RANK@DEBUGPORT;127.0.1.1@0@0@0@0;127.0.1.1@0@0@1@2</ConfFileContents>
+    <AppArgs/>
+    <UserID>shravan</UserID>
+    <NetworkProcessCount>-1</NetworkProcessCount>
+    <TotalProcessCount>-1</TotalProcessCount>
+    <NetworkDevice>niodev</NetworkDevice>
+    <MPJ_HOME>/home/shravan/mpj-v0_44</MPJ_HOME>
+    <Debug>false</Debug>
+    <DebugPort>24500</DebugPort>
+    <Profiler>false</Profiler>
+</MPJProcessInfo>
+
+ DEBUG mpjdaemon  - configFilePath
+ DEBUG mpjdaemon  - Config file created :
+ DEBUG mpjdaemon  - modified: jArgs[0]=-cp
+ DEBUG mpjdaemon  - modified: jArgs[1]=.:/home/shravan/mpj-v0_44/lib/loader1.jar:/home/shravan/mpj-v0_44/lib/mpj.jar:/home/shravan/mpj-v0_44/lib/log4j-1.2.11.jar:/home/shravan/mpj-v0_44/lib/wrapper.jar:/home/shravan/.mpj_users/shravan/c71429af-9c5f-42a9-8cbc-6f2590d576a1/src/MPJ:/home/shravan/.mpj_users/shravan/c71429af-9c5f-42a9-8cbc-6f2590d576a1/src/MPJ
+ DEBUG mpjdaemon  - arguments[0] = java
+ DEBUG mpjdaemon  - arguments[1] = -cp
+ DEBUG mpjdaemon  - arguments[2] = .:/home/shravan/mpj-v0_44/lib/loader1.jar:/home/shravan/mpj-v0_44/lib/mpj.jar:/home/shravan/mpj-v0_44/lib/log4j-1.2.11.jar:/home/shravan/mpj-v0_44/lib/wrapper.jar:/home/shravan/.mpj_users/shravan/c71429af-9c5f-42a9-8cbc-6f2590d576a1/src/MPJ:/home/shravan/.mpj_users/shravan/c71429af-9c5f-42a9-8cbc-6f2590d576a1/src/MPJ
+ DEBUG mpjdaemon  - arguments[3] = runtime.daemon.Wrapper
+ DEBUG mpjdaemon  - arguments[4] = #temp|line;#Number|of|Processes;2;#Protocol|Switch|Limit;131072;#Entry,|HOST_NAME/IP@READPORT@WRITEPORT@RANK@DEBUGPORT;127.0.1.1@0@0@0@0;127.0.1.1@0@0@1@2
+ DEBUG mpjdaemon  - arguments[5] = 2
+ DEBUG mpjdaemon  - arguments[6] = niodev
+ DEBUG mpjdaemon  - arguments[7] = CoderPC
+ DEBUG mpjdaemon  - arguments[8] = 40002
+ DEBUG mpjdaemon  - arguments[9] = 0
+ DEBUG mpjdaemon  - arguments[10] = HelloWorld
+ DEBUG mpjdaemon  - starting the process 
+ DEBUG mpjdaemon  - started the process 
+ DEBUG mpjdaemon  - arguments[0] = java
+ DEBUG mpjdaemon  - arguments[1] = -cp
+ DEBUG mpjdaemon  - arguments[2] = .:/home/shravan/mpj-v0_44/lib/loader1.jar:/home/shravan/mpj-v0_44/lib/mpj.jar:/home/shravan/mpj-v0_44/lib/log4j-1.2.11.jar:/home/shravan/mpj-v0_44/lib/wrapper.jar:/home/shravan/.mpj_users/shravan/c71429af-9c5f-42a9-8cbc-6f2590d576a1/src/MPJ:/home/shravan/.mpj_users/shravan/c71429af-9c5f-42a9-8cbc-6f2590d576a1/src/MPJ
+ DEBUG mpjdaemon  - arguments[3] = runtime.daemon.Wrapper
+ DEBUG mpjdaemon  - arguments[4] = #temp|line;#Number|of|Processes;2;#Protocol|Switch|Limit;131072;#Entry,|HOST_NAME/IP@READPORT@WRITEPORT@RANK@DEBUGPORT;127.0.1.1@0@0@0@0;127.0.1.1@0@0@1@2
+ DEBUG mpjdaemon  - arguments[5] = 2
+ DEBUG mpjdaemon  - arguments[6] = niodev
+ DEBUG mpjdaemon  - arguments[7] = CoderPC
+ DEBUG mpjdaemon  - arguments[8] = 40002
+ DEBUG mpjdaemon  - arguments[9] = 1
+ DEBUG mpjdaemon  - arguments[10] = HelloWorld
+ DEBUG mpjdaemon  - starting the process 
+ DEBUG mpjdaemon  - outputting ...
+ DEBUG mpjdaemon  - outputting ...
+ DEBUG mpjdaemon  - started the process 
+ DEBUG mpjdaemon  - Stopping the output
+ DEBUG mpjdaemon  - Job Finished
+ DEBUG mpjdaemon  - 
+
+ ** .. execution ends .. ** 
+
+
+ DEBUG mpjdaemon  - Accepting connection ..
+ DEBUG mpjdaemon  - Job Started
+ DEBUG mpjdaemon  - Ticket length 0
+ DEBUG mpjdaemon  - Error 0.. 
+ DEBUG mpjdaemon  - Accepting connection ..
+ DEBUG mpjdaemon  - Job Started
+ DEBUG mpjdaemon  - Ticket length 0
+ DEBUG mpjdaemon  - mpjHomeDir /home/shravan/mpj-v0_44
+ DEBUG mpjdaemon  -  args[0] 40055
+ DEBUG mpjdaemon  - setting daemon port to40055
+ DEBUG mpjdaemon  - Starting PortManager thread .. 
+ DEBUG mpjdaemon  - Starting ConnectionManager thread .. 
+ DEBUG mpjdaemon  - serverSocketInit .. 
+ DEBUG mpjdaemon  - serverSocketInit called .. 
+ DEBUG mpjdaemon  - Accepting connection ..
+ DEBUG mpjdaemon  - Accepting connection ..
+ DEBUG mpjdaemon  - Job Started
+ DEBUG mpjdaemon  - Ticket length 0
+ DEBUG mpjdaemon  - Error 0.. 
+ DEBUG mpjdaemon  - Accepting connection ..
+ DEBUG mpjdaemon  - Job Started
+ DEBUG mpjdaemon  - Ticket length 0
+ DEBUG mpjdaemon  - Accepting connection ..
+ DEBUG mpjdaemon  - Job Started
+ DEBUG mpjdaemon  - Ticket length 0
+ DEBUG mpjdaemon  - Accepting connection ..
+ DEBUG mpjdaemon  - Job Started
+ DEBUG mpjdaemon  - Ticket length 0
+ DEBUG mpjdaemon  - Accepting connection ..
+ DEBUG mpjdaemon  - Job Started
+ DEBUG mpjdaemon  - Ticket length 4202
+ DEBUG mpjdaemon  - <MPJProcessInfo>
+    <TicketID>5a496b7b-9d5b-4f34-ab4c-d6fc83456a7b</TicketID>
+    <ClassPath>/home/shravan/Desktop/MPJ</ClassPath>
+    <MasterNode>CoderPC</MasterNode>
+    <MasterPort>40002</MasterPort>
+    <ProcessCount>1</ProcessCount>
+    <StartingRank>0</StartingRank>
+    <JvmArgs/>
+    <WorkingDirectory>/home/shravan/Desktop/MPJ</WorkingDirectory>
+    <ZippedSource>true</ZippedSource>
+    <MainClass>HelloWorld</MainClass>
+    <DeviceName>niodev</DeviceName>
+    <ConfFileContents>#temp line;#Number of Processes;1;#Protocol Switch Limit;131072;#Entry, HOST_NAME/IP@READPORT@WRITEPORT@RANK@DEBUGPORT;127.0.1.1@0@0@0@0</ConfFileContents>
+    <AppArgs/>
+    <UserID>shravan</UserID>
+    <NetworkProcessCount>-1</NetworkProcessCount>
+    <TotalProcessCount>-1</TotalProcessCount>
+    <NetworkDevice>niodev</NetworkDevice>
+    <MPJ_HOME>/home/shravan/mpj-v0_44</MPJ_HOME>
+    <Debug>false</Debug>
+    <DebugPort>24500</DebugPort>
+    <Profiler>false</Profiler>
+</MPJProcessInfo>
+
+ DEBUG mpjdaemon  - configFilePath
+ DEBUG mpjdaemon  - Config file created :
+ DEBUG mpjdaemon  - modified: jArgs[0]=-cp
+ DEBUG mpjdaemon  - modified: jArgs[1]=.:/home/shravan/mpj-v0_44/lib/loader1.jar:/home/shravan/mpj-v0_44/lib/mpj.jar:/home/shravan/mpj-v0_44/lib/log4j-1.2.11.jar:/home/shravan/mpj-v0_44/lib/wrapper.jar:/home/shravan/.mpj_users/shravan/5a496b7b-9d5b-4f34-ab4c-d6fc83456a7b/src/MPJ:/home/shravan/.mpj_users/shravan/5a496b7b-9d5b-4f34-ab4c-d6fc83456a7b/src/MPJ
+ DEBUG mpjdaemon  - arguments[0] = java
+ DEBUG mpjdaemon  - arguments[1] = -cp
+ DEBUG mpjdaemon  - arguments[2] = .:/home/shravan/mpj-v0_44/lib/loader1.jar:/home/shravan/mpj-v0_44/lib/mpj.jar:/home/shravan/mpj-v0_44/lib/log4j-1.2.11.jar:/home/shravan/mpj-v0_44/lib/wrapper.jar:/home/shravan/.mpj_users/shravan/5a496b7b-9d5b-4f34-ab4c-d6fc83456a7b/src/MPJ:/home/shravan/.mpj_users/shravan/5a496b7b-9d5b-4f34-ab4c-d6fc83456a7b/src/MPJ
+ DEBUG mpjdaemon  - arguments[3] = runtime.daemon.Wrapper
+ DEBUG mpjdaemon  - arguments[4] = #temp|line;#Number|of|Processes;1;#Protocol|Switch|Limit;131072;#Entry,|HOST_NAME/IP@READPORT@WRITEPORT@RANK@DEBUGPORT;127.0.1.1@0@0@0@0
+ DEBUG mpjdaemon  - arguments[5] = 1
+ DEBUG mpjdaemon  - arguments[6] = niodev
+ DEBUG mpjdaemon  - arguments[7] = CoderPC
+ DEBUG mpjdaemon  - arguments[8] = 40002
+ DEBUG mpjdaemon  - arguments[9] = 0
+ DEBUG mpjdaemon  - arguments[10] = HelloWorld
+ DEBUG mpjdaemon  - starting the process 
+ DEBUG mpjdaemon  - started the process 
+ DEBUG mpjdaemon  - outputting ...
+ DEBUG mpjdaemon  - Stopping the output
+ DEBUG mpjdaemon  - Job Finished
+ DEBUG mpjdaemon  - 
+
+ ** .. execution ends .. ** 
+
+
+ DEBUG mpjdaemon  - Accepting connection ..
+ DEBUG mpjdaemon  - Job Started
+ DEBUG mpjdaemon  - Ticket length 0

@@ -2,53 +2,11 @@
   <artifact type="jar" name="Distributed-LCM:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/Distributed_LCM_jar</output-path>
     <root id="archive" name="Distributed-LCM.jar">
+      <element id="library" level="project" name="mpi" />
+      <element id="library" level="project" name="mpj" />
       <element id="module-output" name="Distributed-LCM" />
-      <element id="extracted-dir" path="$USER_HOME$/mpj-v0_44/lib/mpi.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$USER_HOME$/mpj-v0_44/lib/mpj.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$USER_HOME$/mpj-v0_44/lib/xdev.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$USER_HOME$/mpj-v0_44/lib/mxdev.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$USER_HOME$/mpj-v0_44/lib/tools.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$USER_HOME$/mpj-v0_44/lib/daemon.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$USER_HOME$/mpj-v0_44/lib/hybdev.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$USER_HOME$/mpj-v0_44/lib/mpiExp.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$USER_HOME$/mpj-v0_44/lib/mpjbuf.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$USER_HOME$/mpj-v0_44/lib/mpjdev.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$USER_HOME$/mpj-v0_44/lib/niodev.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$USER_HOME$/mpj-v0_44/lib/smpdev.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$USER_HOME$/mpj-v0_44/lib/loader1.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$USER_HOME$/mpj-v0_44/lib/loader2.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$USER_HOME$/mpj-v0_44/lib/starter.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$USER_HOME$/mpj-v0_44/lib/log4j-1.2.11.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$USER_HOME$/mpj-v0_44/lib/daemonmanager.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$USER_HOME$/mpj-v0_44/lib/javax.servlet.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$USER_HOME$/mpj-v0_44/lib/runtimecommon.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$USER_HOME$/mpj-v0_44/lib/commons-io-2.4.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$USER_HOME$/mpj-v0_44/lib/commons-cli-1.2.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$USER_HOME$/mpj-v0_44/lib/commons-codec-1.8.jar" path-in-jar="/" />
-      <element id="file-copy" path="$USER_HOME$/mpj-v0_44/lib/mpi.jar" />
-      <element id="file-copy" path="$USER_HOME$/mpj-v0_44/lib/mpj.jar" />
-      <element id="file-copy" path="$USER_HOME$/mpj-v0_44/lib/xdev.jar" />
-      <element id="file-copy" path="$USER_HOME$/mpj-v0_44/lib/mxdev.jar" />
-      <element id="file-copy" path="$USER_HOME$/mpj-v0_44/lib/tools.jar" />
-      <element id="file-copy" path="$USER_HOME$/mpj-v0_44/lib/daemon.jar" />
-      <element id="file-copy" path="$USER_HOME$/mpj-v0_44/lib/hybdev.jar" />
-      <element id="file-copy" path="$USER_HOME$/mpj-v0_44/lib/mpiExp.jar" />
-      <element id="file-copy" path="$USER_HOME$/mpj-v0_44/lib/mpjbuf.jar" />
-      <element id="file-copy" path="$USER_HOME$/mpj-v0_44/lib/mpjdev.jar" />
-      <element id="file-copy" path="$USER_HOME$/mpj-v0_44/lib/niodev.jar" />
-      <element id="file-copy" path="$USER_HOME$/mpj-v0_44/lib/smpdev.jar" />
-      <element id="file-copy" path="$USER_HOME$/mpj-v0_44/lib/loader1.jar" />
-      <element id="file-copy" path="$USER_HOME$/mpj-v0_44/lib/loader2.jar" />
-      <element id="file-copy" path="$USER_HOME$/mpj-v0_44/lib/starter.jar" />
-      <element id="file-copy" path="$USER_HOME$/mpj-v0_44/lib/log4j-1.2.11.jar" />
-      <element id="file-copy" path="$USER_HOME$/mpj-v0_44/lib/daemonmanager.jar" />
-      <element id="file-copy" path="$USER_HOME$/mpj-v0_44/lib/javax.servlet.jar" />
-      <element id="file-copy" path="$USER_HOME$/mpj-v0_44/lib/runtimecommon.jar" />
-      <element id="file-copy" path="$USER_HOME$/mpj-v0_44/lib/commons-io-2.4.jar" />
-      <element id="file-copy" path="$USER_HOME$/mpj-v0_44/lib/commons-cli-1.2.jar" />
-      <element id="file-copy" path="$USER_HOME$/mpj-v0_44/lib/commons-codec-1.8.jar" />
-      <element id="file-copy" path="$PROJECT_DIR$/../RoaringBitmap-0.7.8.jar" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/../RoaringBitmap-0.7.8.jar" path-in-jar="/" />
+      <element id="library" level="project" name="RoaringBitmap-0.7.8" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/RoaringBitmap-0.7.8.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
