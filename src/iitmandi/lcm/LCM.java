@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.math.BigInteger;
+import java.util.Queue;
 
 public class LCM {
 
@@ -18,6 +19,7 @@ public class LCM {
     public double startTime;
     private Data data;
     private Deque<Node> deque;
+    private Deque<Node> initialDeque;
     private ArrayList<ArrayList<Integer>> T;
     private Integer countOfWorkRequest;
     private long idleTime;
@@ -27,6 +29,7 @@ public class LCM {
     public LCM(Data data) {
         this.data = data;
         deque = new LinkedList<>();
+        initialDeque = new LinkedList<>();
         T = new ArrayList<>();
         for(Integer i = 0; i <= data.totalAttributes; i++) {
             T.add(new ArrayList<>());
@@ -58,6 +61,11 @@ public class LCM {
             while (!deque.isEmpty()) {
                 exploreTreeNode();
                 checkAndGiveWork(); // Giving work if any request has come
+            }
+
+            if(!initialDeque.isEmpty()) {
+                addNodeInDeque(initialDeque.removeFirst());
+                continue;
             }
 
             // Asking Giver's ID
@@ -98,7 +106,7 @@ public class LCM {
             }
         }
 
-        System.out.println("Machine " + MPI.COMM_WORLD.Rank() + "\n\t End Time: " + (System.nanoTime() - startTime )/1000000000.0 + "\n\t Count of requesting work: " + countOfWorkRequest + "\n\t Idle Time: " + idleTime/1000000000.0 + "\n\t Work Transfer Time: " + workTransferTime/1000000000.0);
+        System.out.println("--------------------------------------\nMachine " + MPI.COMM_WORLD.Rank() + ":\nEnd Time: " + (System.nanoTime() - startTime )/1000000000.0 + "\nCount of requesting work: " + countOfWorkRequest + "\nIdle Time: " + idleTime/1000000000.0 + "\nWork Transfer Time: " + workTransferTime/1000000000.0);
 
         // Sending total concepts to Machine 0
         send(totalConcepts, 0, 3);
@@ -161,43 +169,52 @@ public class LCM {
     }
 
     private void giveSecondLastWork(Integer destination) {
-        int[] size = new int[1];
-        if(deque.size() > 1) {
+        Node node;
+        if(initialDeque.size() > 1) {
+            Node tempNode = initialDeque.removeLast();
+            node = initialDeque.removeLast();
+            initialDeque.addLast(tempNode);
+        }
+        else if(initialDeque.size() == 1) {
+            node = initialDeque.removeLast();
+        }
+        else if(deque.size() > 1) {
             Node lastNode = deque.removeLast();
-            Node node = deque.removeLast();
+            node = deque.removeLast();
             deque.addLast(lastNode);
-            workSize = workSize.subtract(TWO.pow(data.totalAttributes - node.marker + 1));
-            int[] buffer = node.toArray();
-            size[0] = buffer.length;
-            long startTime = System.nanoTime();
-            MPI.COMM_WORLD.Send( size, 0, 1, MPI.INT, destination, 0);
-            MPI.COMM_WORLD.Send( buffer, 0, buffer.length, MPI.INT, destination, 0);
-            long endTime = System.nanoTime();
-            workTransferTime += endTime - startTime;
         }
         else {
-            size[0] = 0;
-            MPI.COMM_WORLD.Send( size, 0, 1, MPI.INT, destination, 0);
+            send(0, destination, 0);
+            return;
         }
+        workSize = workSize.subtract(TWO.pow(data.totalAttributes - node.marker + 1));
+        int[] buffer = node.toArray();
+        long startTime = System.nanoTime();
+        send(buffer.length, destination, 0);
+        MPI.COMM_WORLD.Send( buffer, 0, buffer.length, MPI.INT, destination, 0);
+        long endTime = System.nanoTime();
+        workTransferTime += endTime - startTime;
     }
 
     private void giveLastWork(Integer destination) {
-        int[] size = new int[1];
-        if(deque.size() > 1) {
-            Node node = deque.removeLast();
-            workSize = workSize.subtract(TWO.pow(data.totalAttributes - node.marker + 1));
-            int[] buffer = node.toArray();
-            size[0] = buffer.length;
-            long startTime = System.nanoTime();
-            MPI.COMM_WORLD.Send( size, 0, 1, MPI.INT, destination, 0);
-            MPI.COMM_WORLD.Send( buffer, 0, buffer.length, MPI.INT, destination, 0);
-            long endTime = System.nanoTime();
-            workTransferTime += endTime - startTime;
+        Node node;
+        if(!initialDeque.isEmpty()) {
+            node = initialDeque.removeLast();
+        }
+        else if(deque.size() > 1) {
+            node = deque.removeLast();
         }
         else {
-            size[0] = 0;
-            MPI.COMM_WORLD.Send( size, 0, 1, MPI.INT, destination, 0);
+            send(0, destination, 0);
+            return;
         }
+        workSize = workSize.subtract(TWO.pow(data.totalAttributes - node.marker + 1));
+        int[] buffer = node.toArray();
+        long startTime = System.nanoTime();
+        send(buffer.length, destination, 0);
+        MPI.COMM_WORLD.Send( buffer, 0, buffer.length, MPI.INT, destination, 0);
+        long endTime = System.nanoTime();
+        workTransferTime += endTime - startTime;
     }
 
     private void updateWorkSizeInLog(Boolean updateGlobally) {
@@ -220,7 +237,7 @@ public class LCM {
         updateWorkSizeInLog(true);
     }
 
-    void send(int value, int destination, int tag) {
+    void send(Integer value, Integer destination, Integer tag) {
         int buffer[] = new int[1];
         buffer[0] = value;
         MPI.COMM_WORLD.Isend( buffer, 0, 1, MPI.INT, destination, tag);
@@ -286,5 +303,84 @@ public class LCM {
             }
         }
         return result;
+    }
+
+    private Node generateChild(Node node) {
+        boolean validConcept = true;
+        if (!node.seedConcept.contains(node.marker)) {
+            node.seedConcept.add(node.marker);
+            RoaringBitmap objectList = findCommonObjects(node.seedConcept);
+            RoaringBitmap childConcept = findCommonAttributes(objectList);
+            node.seedConcept.remove(node.marker);
+            for (Integer x : childConcept) {
+                if (x >= node.marker) {
+                    break;
+                }
+                if (!node.seedConcept.contains(x)) {
+                    validConcept = false;
+                }
+            }
+            if(validConcept) {
+                return new Node(childConcept, node.marker + 1);
+            }
+        }
+        return null;
+    }
+
+    public void distributeWorkInitially(Integer numberOfWorkers) {
+        System.out.println("--------------------------------------");
+        System.out.println("Initial Distribution Started");
+        Queue<Node> queue = new LinkedList<>();
+        RoaringBitmap rootConcept = findCommonAttributes(findCommonObjects(new RoaringBitmap()));
+        Node root = new Node(rootConcept, 1);
+        queue.add(root);
+        int[] size = new int[1];
+
+        while (!queue.isEmpty() && (data.totalAttributes - queue.peek().marker) >= 1) {
+            Integer sizeOfQueue = queue.size();
+            for (Integer i = 0; i < sizeOfQueue; i++) {
+                Node node = queue.remove();
+                Node child = generateChild(node);
+                node.marker++;
+                queue.add(node);
+                if (child != null) {
+                    queue.add(child);
+                }
+            }
+            if (queue.size() >= numberOfWorkers) {
+                for (Integer i = 1; i <= numberOfWorkers; i++) {
+                    Node node = queue.remove();
+                    int[] array = node.toArray();
+                    send(array.length, i, 0);
+                    MPI.COMM_WORLD.Send(array, 0, array.length, MPI.INT, i, 0);
+                }
+            }
+        }
+        for (Integer i = 2; i <= numberOfWorkers; i++) {
+            send(0, i, 0);
+        }
+        while(!queue.isEmpty()) {
+            Node node = queue.remove();
+            int[] array = node.toArray();
+            send(array.length, 1, 0);
+            MPI.COMM_WORLD.Send(array, 0, array.length, MPI.INT, 1, 0);
+        }
+        send(0, 1, 0);
+        System.out.println("Distribution Completed: " + (System.nanoTime() - startTime )/1000000000.0);
+    }
+
+    public void receiveWorkInitially() {
+        int[] size = new int[1];
+        MPI.COMM_WORLD.Recv( size,0, 1, MPI.INT,0,0);
+        while(size[0] != 0) {
+            int[] array = new int[size[0]];
+            MPI.COMM_WORLD.Recv( array,0, size[0], MPI.INT,0,0);
+            Node node = new Node(array);
+            this.initialDeque.add(node);
+            workSize = workSize.add(TWO.pow( data.totalAttributes - node.marker + 1));
+            updateWorkSizeInLog(false);
+            MPI.COMM_WORLD.Recv( size,0, 1, MPI.INT,0,0);
+        }
+        send(workSizeInLog, 0, 4);
     }
 }

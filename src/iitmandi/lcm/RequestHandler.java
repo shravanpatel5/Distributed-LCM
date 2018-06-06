@@ -39,14 +39,14 @@ public class RequestHandler {
     public Integer totalConcepts;
     private ArrayList<Integer> workList;
     private TreeSet<Pair> workTree;
-    private Integer minWorkThreshold;
+    public Integer minWorkThreshold;
     public Integer countOfWorkRequest;
     public Boolean blocking;
+    public Boolean startWithStaticDistribution;
 
-    public RequestHandler(Integer numberOfRequesters, Integer minWorkThreshold) {
+    public RequestHandler(Integer numberOfRequesters) {
         totalConcepts = 0;
         this.numberOfRequesters = numberOfRequesters;
-        this.minWorkThreshold = minWorkThreshold;
         workTree = new TreeSet<Pair>(new PairComparator());
         workList = new ArrayList<>();
         workList.add(0);
@@ -58,9 +58,9 @@ public class RequestHandler {
     }
 
     public void updateWork(Integer ID, Integer work) {
-            workTree.remove(new Pair(ID, workList.get(ID)));
-            workList.set(ID, work);
-            workTree.add(new Pair(ID, work));
+        workTree.remove(new Pair(ID, workList.get(ID)));
+        workList.set(ID, work);
+        workTree.add(new Pair(ID, work));
     }
 
     private Integer maxWork() {
@@ -76,14 +76,23 @@ public class RequestHandler {
         int buffer[] = new int[1];
         Integer numberOfTerminatedRequesters = 0;
         Boolean isTerminated = false;
-        if(numberOfRequesters == 1) {
+        if (numberOfRequesters == 1) {
             isTerminated = true;
         }
-        while(true) {
+        if(startWithStaticDistribution) {
+            for (Integer i = 1; i <= numberOfRequesters; i++) {
+                MPI.EMPTY_STATUS = MPI.COMM_WORLD.Recv( buffer, 0, 1, MPI.INT, MPI.ANY_SOURCE, 4);
+                Integer requesterID = MPI.EMPTY_STATUS.source;
+                if(!isTerminated) {
+                    updateWork(requesterID, buffer[0]);
+                }
+            }
+        }
+        while (true) {
             MPI.EMPTY_STATUS = MPI.COMM_WORLD.Recv( buffer, 0, 1, MPI.INT, MPI.ANY_SOURCE, MPI.ANY_TAG);
             Integer requesterID = MPI.EMPTY_STATUS.source;
-            if( MPI.EMPTY_STATUS.tag == 0 || MPI.EMPTY_STATUS.tag == 2) {
-                if(!isTerminated) {
+            if (MPI.EMPTY_STATUS.tag == 0 || MPI.EMPTY_STATUS.tag == 2) {
+                if (!isTerminated) {
                     updateWork(requesterID, buffer[0]);
                 }
             }
