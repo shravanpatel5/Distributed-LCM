@@ -68,10 +68,11 @@ public class LCM {
                 continue;
             }
 
+            long startTime = System.nanoTime();
+
             // Asking Giver's ID
             send(0, 0, 1);
 
-            long startTime = System.nanoTime();
 
             // Receiving Giver's ID
             MPI.EMPTY_STATUS = MPI.COMM_WORLD.Iprobe(0,0);
@@ -80,8 +81,8 @@ public class LCM {
                 MPI.EMPTY_STATUS = MPI.COMM_WORLD.Iprobe(0,0);
             }
 
-            long endTime = System.nanoTime();
-            idleTime += endTime - startTime;
+//            long endTime = System.nanoTime();
+//            idleTime += endTime - startTime;
 
             MPI.COMM_WORLD.Recv( buffer,0, 1, MPI.INT,0,0);
             Integer giverID = buffer[0];
@@ -104,6 +105,8 @@ public class LCM {
                 }
                 send(workSizeInLog, 0, 2);
             }
+            long endTime = System.nanoTime();
+            idleTime += endTime - startTime;
         }
 
         System.out.println("--------------------------------------\nMachine " + MPI.COMM_WORLD.Rank() + ":\nEnd Time: " + (System.nanoTime() - startTime )/1000000000.0 + "\nCount of requesting work: " + countOfWorkRequest + "\nIdle Time: " + idleTime/1000000000.0 + "\nWork Transfer Time: " + workTransferTime/1000000000.0);
